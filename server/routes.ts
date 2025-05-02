@@ -1,6 +1,7 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { cmsStorage } from "./cms-storage";
 import { contactFormSchema, insertCmsContentSchema, insertBeliefSchema, insertMeetingSchema } from "@shared/schema";
 import { z } from "zod";
 
@@ -24,7 +25,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/cms/content/:type", async (req, res) => {
     try {
       const { type } = req.params;
-      const content = await storage.getCmsContentByType(type);
+      const content = await cmsStorage.getCmsContentByType(type);
       res.status(200).json(content);
     } catch (error) {
       handleError(error, res, "content lookup");
@@ -35,7 +36,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/cms/content", async (req, res) => {
     try {
       const validatedData = insertCmsContentSchema.parse(req.body);
-      const content = await storage.createCmsContent(validatedData);
+      const content = await cmsStorage.createCmsContent(validatedData);
       res.status(201).json(content);
     } catch (error) {
       handleError(error, res, "content creation");
@@ -51,7 +52,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const validatedData = insertCmsContentSchema.partial().parse(req.body);
-      const updatedContent = await storage.updateCmsContent(id, validatedData);
+      const updatedContent = await cmsStorage.updateCmsContent(id, validatedData);
       
       if (!updatedContent) {
         return res.status(404).json({ message: "Content not found" });
@@ -71,7 +72,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid ID format" });
       }
       
-      const success = await storage.deleteCmsContent(id);
+      const success = await cmsStorage.deleteCmsContent(id);
       if (!success) {
         return res.status(404).json({ message: "Content not found" });
       }
@@ -87,7 +88,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get all beliefs
   app.get("/api/beliefs", async (req, res) => {
     try {
-      const beliefs = await storage.getAllBeliefs();
+      const beliefs = await cmsStorage.getAllBeliefs();
       res.status(200).json(beliefs);
     } catch (error) {
       handleError(error, res, "beliefs lookup");
@@ -97,7 +98,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get active beliefs only
   app.get("/api/beliefs/active", async (req, res) => {
     try {
-      const beliefs = await storage.getActiveBeliefs();
+      const beliefs = await cmsStorage.getActiveBeliefs();
       res.status(200).json(beliefs);
     } catch (error) {
       handleError(error, res, "active beliefs lookup");
@@ -112,7 +113,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid ID format" });
       }
       
-      const belief = await storage.getBelief(id);
+      const belief = await cmsStorage.getBelief(id);
       if (!belief) {
         return res.status(404).json({ message: "Belief not found" });
       }
@@ -127,7 +128,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/beliefs", async (req, res) => {
     try {
       const validatedData = insertBeliefSchema.parse(req.body);
-      const belief = await storage.createBelief(validatedData);
+      const belief = await cmsStorage.createBelief(validatedData);
       res.status(201).json(belief);
     } catch (error) {
       handleError(error, res, "belief creation");
@@ -143,7 +144,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const validatedData = insertBeliefSchema.partial().parse(req.body);
-      const updatedBelief = await storage.updateBelief(id, validatedData);
+      const updatedBelief = await cmsStorage.updateBelief(id, validatedData);
       
       if (!updatedBelief) {
         return res.status(404).json({ message: "Belief not found" });
@@ -163,7 +164,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid ID format" });
       }
       
-      const success = await storage.deleteBelief(id);
+      const success = await cmsStorage.deleteBelief(id);
       if (!success) {
         return res.status(404).json({ message: "Belief not found" });
       }
@@ -179,7 +180,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get all meetings
   app.get("/api/meetings", async (req, res) => {
     try {
-      const meetings = await storage.getAllMeetings();
+      const meetings = await cmsStorage.getAllMeetings();
       res.status(200).json(meetings);
     } catch (error) {
       handleError(error, res, "meetings lookup");
@@ -189,7 +190,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get active meetings only
   app.get("/api/meetings/active", async (req, res) => {
     try {
-      const meetings = await storage.getActiveMeetings();
+      const meetings = await cmsStorage.getActiveMeetings();
       res.status(200).json(meetings);
     } catch (error) {
       handleError(error, res, "active meetings lookup");
@@ -204,7 +205,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid ID format" });
       }
       
-      const meeting = await storage.getMeeting(id);
+      const meeting = await cmsStorage.getMeeting(id);
       if (!meeting) {
         return res.status(404).json({ message: "Meeting not found" });
       }
@@ -219,7 +220,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/meetings", async (req, res) => {
     try {
       const validatedData = insertMeetingSchema.parse(req.body);
-      const meeting = await storage.createMeeting(validatedData);
+      const meeting = await cmsStorage.createMeeting(validatedData);
       res.status(201).json(meeting);
     } catch (error) {
       handleError(error, res, "meeting creation");
@@ -235,7 +236,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const validatedData = insertMeetingSchema.partial().parse(req.body);
-      const updatedMeeting = await storage.updateMeeting(id, validatedData);
+      const updatedMeeting = await cmsStorage.updateMeeting(id, validatedData);
       
       if (!updatedMeeting) {
         return res.status(404).json({ message: "Meeting not found" });
@@ -255,7 +256,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid ID format" });
       }
       
-      const success = await storage.deleteMeeting(id);
+      const success = await cmsStorage.deleteMeeting(id);
       if (!success) {
         return res.status(404).json({ message: "Meeting not found" });
       }

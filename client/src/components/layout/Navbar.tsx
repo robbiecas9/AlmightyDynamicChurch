@@ -91,16 +91,27 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
-          {navItems.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              className="text-white hover:text-secondary transition-colors py-2 font-medium"
-              onClick={closeMenu}
-            >
-              {item.title}
-            </a>
-          ))}
+          {navItems.map((item, index) => 
+            item.href.startsWith('/') ? (
+              <Link
+                key={index}
+                href={item.href}
+                className="text-white hover:text-secondary transition-colors py-2 font-medium"
+                onClick={closeMenu}
+              >
+                {item.title}
+              </Link>
+            ) : (
+              <a
+                key={index}
+                href={item.href}
+                className="text-white hover:text-secondary transition-colors py-2 font-medium"
+                onClick={closeMenu}
+              >
+                {item.title}
+              </a>
+            )
+          )}
         </div>
       </div>
     </nav>

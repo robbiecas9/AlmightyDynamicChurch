@@ -78,6 +78,94 @@ export class MemStorage implements IStorage {
     this.contactSubmissions.set(id, submission);
     return submission;
   }
+  
+  // Forward CMS Content methods to cms-storage
+  async getCmsContent(id: number): Promise<CmsContent | undefined> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getCmsContent(id);
+  }
+  
+  async getCmsContentByType(type: string): Promise<CmsContent[]> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getCmsContentByType(type);
+  }
+  
+  async createCmsContent(content: InsertCmsContent): Promise<CmsContent> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.createCmsContent(content);
+  }
+  
+  async updateCmsContent(id: number, content: Partial<InsertCmsContent>): Promise<CmsContent | undefined> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.updateCmsContent(id, content);
+  }
+  
+  async deleteCmsContent(id: number): Promise<boolean> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.deleteCmsContent(id);
+  }
+  
+  // Forward Belief methods to cms-storage
+  async getBelief(id: number): Promise<Belief | undefined> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getBelief(id);
+  }
+  
+  async getAllBeliefs(): Promise<Belief[]> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getAllBeliefs();
+  }
+  
+  async getActiveBeliefs(): Promise<Belief[]> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getActiveBeliefs();
+  }
+  
+  async createBelief(belief: InsertBelief): Promise<Belief> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.createBelief(belief);
+  }
+  
+  async updateBelief(id: number, belief: Partial<InsertBelief>): Promise<Belief | undefined> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.updateBelief(id, belief);
+  }
+  
+  async deleteBelief(id: number): Promise<boolean> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.deleteBelief(id);
+  }
+  
+  // Forward Meeting methods to cms-storage
+  async getMeeting(id: number): Promise<Meeting | undefined> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getMeeting(id);
+  }
+  
+  async getAllMeetings(): Promise<Meeting[]> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getAllMeetings();
+  }
+  
+  async getActiveMeetings(): Promise<Meeting[]> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.getActiveMeetings();
+  }
+  
+  async createMeeting(meeting: InsertMeeting): Promise<Meeting> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.createMeeting(meeting);
+  }
+  
+  async updateMeeting(id: number, meeting: Partial<InsertMeeting>): Promise<Meeting | undefined> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.updateMeeting(id, meeting);
+  }
+  
+  async deleteMeeting(id: number): Promise<boolean> {
+    const { cmsStorage } = require('./cms-storage');
+    return cmsStorage.deleteMeeting(id);
+  }
 }
 
 export const storage = new MemStorage();
