@@ -1,32 +1,4 @@
-import { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
 const BibleImageSection = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section className="relative py-24">
       <div className="absolute inset-0 z-0">
@@ -40,13 +12,7 @@ const BibleImageSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center text-white">
-          <motion.div
-            ref={ref}
-            variants={variants}
-            initial="hidden"
-            animate={controls}
-            className="animate-on-scroll"
-          >
+          <div className="animate-fade-in-down">
             <p className="text-xl md:text-2xl mb-6 scripture">
               "Come, let us bow down in worship, let us kneel before the LORD our Maker; for he is our God and we are the people of his pasture, the flock under his care"
               <span className="text-secondary font-semibold">( Psalms 95: 6,7)</span>
@@ -60,7 +26,7 @@ const BibleImageSection = () => {
                 Join Our Worship
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

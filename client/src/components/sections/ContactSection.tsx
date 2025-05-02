@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,38 +33,6 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -100,22 +66,13 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="animate-on-scroll"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12"
-          >
+        <div className="animate-fade-in-down">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12 animate-fade-in-down animate-delay-1">
             Contact Us
-          </motion.h2>
+          </h2>
 
           <div className="flex flex-col lg:flex-row gap-8">
-            <motion.div variants={itemVariants} className="lg:w-1/2">
+            <div className="lg:w-1/2 animate-fade-in-down animate-delay-2">
               <div className="bg-white rounded-lg shadow-lg p-8 h-full">
                 <h3 className="text-2xl font-heading font-bold text-primary mb-6">
                   Church Address
@@ -176,9 +133,9 @@ const ContactSection = () => {
                   ></iframe>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="lg:w-1/2">
+            <div className="lg:w-1/2 animate-fade-in-down animate-delay-3">
               <div className="bg-white rounded-lg shadow-lg p-8 h-full">
                 <h3 className="text-2xl font-heading font-bold text-primary mb-6">
                   Get In Touch
@@ -269,9 +226,9 @@ const ContactSection = () => {
                   </form>
                 </Form>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,42 +1,6 @@
-import { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { Clock } from "lucide-react";
 
 const MeetingsSection = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   const meetingSchedules = [
     {
       type: "English & Malayalam Combined",
@@ -51,22 +15,13 @@ const MeetingsSection = () => {
   return (
     <section id="meetings" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="animate-on-scroll"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12"
-          >
+        <div className="animate-fade-in-down">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12 animate-fade-in-down animate-delay-1">
             Our Christian Meetings
-          </motion.h2>
+          </h2>
 
           <div className="flex flex-col lg:flex-row gap-12">
-            <motion.div variants={itemVariants} className="lg:w-1/2">
+            <div className="lg:w-1/2 animate-fade-in-down animate-delay-2">
               <p className="text-lg mb-6">
                 Our Christian meetings serve as gatherings where believers come together to worship, study scripture, pray, and fellowship with one another. Hebrews 10:25 says, "And let us not neglect our meeting together, as some people do, but encourage one another, especially now that the day of his return is drawing near."
               </p>
@@ -84,9 +39,9 @@ const MeetingsSection = () => {
                 className="rounded-lg shadow-lg w-full h-64 object-cover"
                 alt="Christian fellowship"
               />
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="lg:w-1/2">
+            <div className="lg:w-1/2 animate-fade-in-down animate-delay-3">
               <div className="bg-gray-50 rounded-lg shadow-lg p-8">
                 <h3 className="text-2xl font-heading font-bold text-primary mb-6">
                   Worship Meeting Timings
@@ -132,9 +87,9 @@ const MeetingsSection = () => {
                   <p className="text-center mt-2 text-gray-600">Worship Meetings</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
