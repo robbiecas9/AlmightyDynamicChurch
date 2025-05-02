@@ -76,7 +76,7 @@ export class MemCmsStorage implements ICmsStorage {
       const defaultContent = [
         {
           type: "hero",
-          title: "ALMIGHTY GOD WORSHIP CHURCH",
+          title: "ALMIGHTY GOD FELLOWSHIP",
           subtitle: "BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA",
           content: "FOLLOW JESUS FOR PEACE AND ETERNAL LIFE",
           imageUrl: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57",
@@ -107,6 +107,42 @@ export class MemCmsStorage implements ICmsStorage {
       // Add each content item to the CMS
       defaultContent.forEach(content => {
         this.createCmsContent(content as InsertCmsContent);
+      });
+      
+      // Add default worship services/meetings
+      const defaultMeetings = [
+        {
+          title: "Sunday Worship Service",
+          day: "Sunday",
+          time: "10:00 AM - 12:30 PM",
+          location: "Main Sanctuary",
+          description: "Our main weekly worship service with praise, prayer, and Bible teaching.",
+          sortOrder: 1,
+          isActive: true
+        },
+        {
+          title: "Wednesday Bible Study",
+          day: "Wednesday",
+          time: "7:00 PM - 8:30 PM",
+          location: "Fellowship Hall",
+          description: "Midweek Bible study and prayer meeting.",
+          sortOrder: 2,
+          isActive: true
+        },
+        {
+          title: "Friday Prayer Meeting",
+          day: "Friday",
+          time: "7:30 PM - 9:00 PM",
+          location: "Prayer Room",
+          description: "Special prayer service focusing on intercession and spiritual growth.",
+          sortOrder: 3,
+          isActive: true
+        }
+      ];
+      
+      // Add each meeting to the CMS
+      defaultMeetings.forEach(meeting => {
+        this.createMeeting(meeting as InsertMeeting);
       });
     } catch (error) {
       console.error("Error seeding initial data:", error);

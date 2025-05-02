@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
+import { InsertMeeting } from "@shared/schema";
 
 interface ContentItem {
   id: number;
@@ -478,6 +479,8 @@ const Dashboard = () => {
     );
   };
   
+
+
   const MeetingsSection = () => {
     if (!meetings) {
       return <div>Loading meetings...</div>;
@@ -485,8 +488,15 @@ const Dashboard = () => {
     
     return (
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold">Worship Services & Meetings</h2>
-        <p>Manage the church's worship services and meeting schedule.</p>
+        <div className="flex justify-between items-center">
+          <div>
+            <h2 className="text-2xl font-bold">Worship Services & Meetings</h2>
+            <p className="text-gray-600">Manage the church's worship services and meeting schedule.</p>
+          </div>
+          <Button onClick={initializeNewMeeting}>
+            Add New Service
+          </Button>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {meetings.map((meeting: Meeting) => (
@@ -497,13 +507,19 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-500">{meeting.location}</p>
+                {meeting.description && (
+                  <p className="mt-2 text-sm line-clamp-2">{meeting.description}</p>
+                )}
               </CardContent>
               <CardFooter>
                 <Button 
-                  onClick={() => setSelectedMeeting(meeting)}
+                  onClick={() => {
+                    setSelectedMeeting(meeting);
+                    setNewMeeting(null);
+                  }}
                   variant="outline"
                 >
-                  Edit Meeting
+                  Edit Service
                 </Button>
               </CardFooter>
             </Card>
@@ -512,7 +528,7 @@ const Dashboard = () => {
         
         {selectedMeeting && (
           <div className="bg-gray-50 p-6 rounded-lg mt-8">
-            <h3 className="text-xl font-semibold mb-4">Edit Meeting</h3>
+            <h3 className="text-xl font-semibold mb-4">Edit Worship Service</h3>
             <form onSubmit={handleMeetingSubmit} className="space-y-4">
               <div>
                 <Label htmlFor="meetingTitle">Title</Label>
@@ -581,6 +597,90 @@ const Dashboard = () => {
                 <Button type="button" variant="outline" onClick={() => setSelectedMeeting(null)}>Cancel</Button>
                 <Button type="submit" disabled={updateMeetingMutation.isPending}>
                   {updateMeetingMutation.isPending ? 'Saving...' : 'Save Changes'}
+                </Button>
+              </div>
+            </form>
+          </div>
+        )}
+        
+        {newMeeting && (
+          <div className="bg-gray-50 p-6 rounded-lg mt-8">
+            <h3 className="text-xl font-semibold mb-4">Add New Worship Service</h3>
+            <form onSubmit={handleNewMeetingSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="newMeetingTitle">Title<span className="text-red-500">*</span></Label>
+                <Input
+                  id="newMeetingTitle"
+                  value={newMeeting.title || ''}
+                  onChange={(e) => setNewMeeting({
+                    ...newMeeting,
+                    title: e.target.value
+                  })}
+                  required
+                />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="newMeetingDay">Day<span className="text-red-500">*</span></Label>
+                  <Input
+                    id="newMeetingDay"
+                    value={newMeeting.day || ''}
+                    placeholder="e.g. Sunday"
+                    onChange={(e) => setNewMeeting({
+                      ...newMeeting,
+                      day: e.target.value
+                    })}
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <Label htmlFor="newMeetingTime">Time<span className="text-red-500">*</span></Label>
+                  <Input
+                    id="newMeetingTime"
+                    value={newMeeting.time || ''}
+                    placeholder="e.g. 10:00 AM - 12:30 PM"
+                    onChange={(e) => setNewMeeting({
+                      ...newMeeting,
+                      time: e.target.value
+                    })}
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <Label htmlFor="newMeetingLocation">Location</Label>
+                <Input
+                  id="newMeetingLocation"
+                  value={newMeeting.location || ''}
+                  placeholder="e.g. Main Sanctuary"
+                  onChange={(e) => setNewMeeting({
+                    ...newMeeting,
+                    location: e.target.value
+                  })}
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="newMeetingDescription">Description</Label>
+                <Textarea
+                  id="newMeetingDescription"
+                  value={newMeeting.description || ''}
+                  rows={3}
+                  placeholder="Provide details about this service..."
+                  onChange={(e) => setNewMeeting({
+                    ...newMeeting,
+                    description: e.target.value
+                  })}
+                />
+              </div>
+              
+              <div className="flex justify-end space-x-2 pt-4">
+                <Button type="button" variant="outline" onClick={() => setNewMeeting(null)}>Cancel</Button>
+                <Button type="submit" disabled={createMeetingMutation.isPending}>
+                  {createMeetingMutation.isPending ? 'Creating...' : 'Create Service'}
                 </Button>
               </div>
             </form>
