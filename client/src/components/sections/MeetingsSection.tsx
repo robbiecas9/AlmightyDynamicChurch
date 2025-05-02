@@ -1,17 +1,7 @@
-import { Clock } from "lucide-react";
+import { Clock, Calendar } from "lucide-react";
+import { meetingData } from "@/lib/church-data";
 
 const MeetingsSection = () => {
-  const meetingSchedules = [
-    {
-      type: "English & Malayalam Combined",
-      time: "10:00 am to 12:30 pm",
-    },
-    {
-      type: "Hindi Service",
-      time: "4:00 pm to 5:30 pm",
-    },
-  ];
-
   return (
     <section id="meetings" className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -50,29 +40,27 @@ const MeetingsSection = () => {
                 <div className="mb-8">
                   <div className="flex items-center mb-2">
                     <span className="text-secondary mr-3 text-xl">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar">
-                        <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
-                        <line x1="16" x2="16" y1="2" y2="6"/>
-                        <line x1="8" x2="8" y1="2" y2="6"/>
-                        <line x1="3" x2="21" y1="10" y2="10"/>
-                      </svg>
+                      <Calendar className="h-6 w-6" />
                     </span>
-                    <span className="text-xl font-semibold">Every Sunday</span>
+                    <span className="text-xl font-semibold">Every {meetingData[0].day}</span>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  {meetingSchedules.map((schedule, index) => (
+                  {meetingData.map((meeting) => (
                     <div
-                      key={index}
+                      key={meeting.id}
                       className="flex flex-col sm:flex-row sm:items-center p-4 bg-white rounded-lg shadow-md"
                     >
                       <div className="sm:w-1/2 mb-3 sm:mb-0">
-                        <h4 className="text-lg font-bold text-primary">{schedule.type}</h4>
+                        <h4 className="text-lg font-bold text-primary">{meeting.title}</h4>
+                        {meeting.location && (
+                          <p className="text-sm text-gray-600">{meeting.location}</p>
+                        )}
                       </div>
                       <div className="sm:w-1/2 flex items-center">
                         <Clock className="text-secondary mr-2 h-5 w-5" />
-                        <span>{schedule.time}</span>
+                        <span>{meeting.time}</span>
                       </div>
                     </div>
                   ))}

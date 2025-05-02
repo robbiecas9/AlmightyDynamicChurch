@@ -1,3 +1,5 @@
+import { heroContent } from "@/lib/church-data";
+
 const Hero = () => {
   return (
     <section 
@@ -6,7 +8,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+          src={`${heroContent.imageUrl}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80`} 
           className="object-cover w-full h-full" 
           alt="Church worship" 
         />
@@ -17,20 +19,20 @@ const Hero = () => {
         <h1 
           className="text-white font-heading text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down"
         >
-          ALMIGHTY GOD FELLOWSHIP
+          {heroContent.title}
         </h1>
         
         <p 
           className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-1"
         >
-          BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA
+          {heroContent.subtitle}
         </p>
         
         <div 
           className="mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-2"
         >
           <h2 className="text-secondary font-heading text-2xl md:text-3xl mb-2">FOLLOW JESUS</h2>
-          <p className="text-white text-xl md:text-2xl">FOR PEACE AND ETERNAL LIFE</p>
+          <p className="text-white text-xl md:text-2xl">{heroContent.content}</p>
         </div>
         
         <div 
@@ -46,10 +48,10 @@ const Hero = () => {
           className="mt-12 animate-fade-in-down animate-delay-4"
         >
           <a 
-            href="#meetings" 
+            href={heroContent.buttonLink} 
             className="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-lg mx-2"
           >
-            Join Our Worship
+            {heroContent.buttonText}
           </a>
           <a 
             href="#about" 

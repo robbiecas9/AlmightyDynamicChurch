@@ -6,6 +6,92 @@ export interface Belief {
   scripture: string;
 }
 
+export interface Meeting {
+  id: number;
+  title: string;
+  day: string;
+  time: string;
+  location: string;
+  description?: string;
+}
+
+export interface HeroContent {
+  title: string;
+  subtitle: string;
+  content: string;
+  imageUrl: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+export interface PastorMessageContent {
+  title: string;
+  subtitle: string;
+  content: string;
+  name: string;
+  position: string;
+  imageUrl: string;
+}
+
+export interface ScriptureBannerContent {
+  content: string;
+  reference: string;
+}
+
+// Static content for the Hero section
+export const heroContent: HeroContent = {
+  title: "ALMIGHTY GOD FELLOWSHIP",
+  subtitle: "BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA",
+  content: "FOLLOW JESUS FOR PEACE AND ETERNAL LIFE",
+  imageUrl: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57",
+  buttonText: "Join Our Worship",
+  buttonLink: "#meetings"
+};
+
+// Static content for the Pastor Message section
+export const pastorMessageContent: PastorMessageContent = {
+  title: "Message From Our Pastor",
+  subtitle: "Rev. Dr. Jacob Mathai",
+  content: "ALMIGHTY GOD Fellowship is a reformed church and spiritual movement inspired by the Holy spirit and totally based on the teachings of Jesus Christ. As per the teachings of Jesus Christ in John 17: 3 the ONLY ONE AND TRUE God is the ALMIGHTY JEHOVAH God, the creator of heavens and earth (Genesis 1: 1, 2:4, 17: 1). As per John 4: 23,24 and Mathew 4: 10, Jesus said to worship ONLY THE FATHER in spirit and truth. According to Rev 5: 13 people are expected to give glory and express thanks and gratitude to Jesus, the son of God, our saviour who died for us on the cross of Calvary. We encourage people of all nations to worship Almighty Jehovah God through Jesus Christ. You are welcome to join our worship meetings on every Sundays.",
+  name: "Rev Dr. Jacob Mathai",
+  position: "Senior Pastor",
+  imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136"
+};
+
+// Static content for the Scripture Banner
+export const scriptureBannerContent: ScriptureBannerContent = {
+  content: "Jesus said to him, \"I am the way, and the truth, and the life. No one comes to the Father except through me.\"",
+  reference: "John 14:6"
+};
+
+// Meeting schedule data
+export const meetingData: Meeting[] = [
+  {
+    id: 1,
+    title: "Sunday Worship Service",
+    day: "Sunday",
+    time: "10:00 AM - 12:30 PM",
+    location: "Main Sanctuary",
+    description: "Our main weekly worship service with praise, prayer, and Bible teaching."
+  },
+  {
+    id: 2,
+    title: "Wednesday Bible Study",
+    day: "Wednesday",
+    time: "7:00 PM - 8:30 PM",
+    location: "Fellowship Hall",
+    description: "Midweek Bible study and prayer meeting."
+  },
+  {
+    id: 3,
+    title: "Friday Prayer Meeting",
+    day: "Friday",
+    time: "7:30 PM - 9:00 PM",
+    location: "Prayer Room",
+    description: "Special prayer service focusing on intercession and spiritual growth."
+  }
+];
+
 export const beliefData: Belief[] = [
   {
     id: 1,
