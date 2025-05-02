@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-8 md:mb-0">
             <h3 className="text-2xl font-heading font-bold mb-4">
-              Almighty God Worship Church
+              Almighty God Fellowship
             </h3>
             <p className="max-w-md">
               We encourage people of all nations to worship Almighty Jehovah God 
@@ -102,10 +102,10 @@ const Footer = () => {
               <p className="mb-2 flex items-center">
                 <Mail className="h-4 w-4 mr-2" /> 
                 <a 
-                  href="mailto:almightygwc@gmail.com" 
+                  href="mailto:almightygf@gmail.com" 
                   className="hover:text-secondary transition-colors"
                 >
-                  almightygwc@gmail.com
+                  almightygf@gmail.com
                 </a>
               </p>
               <p className="flex items-center">
@@ -122,7 +122,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
-          <p>&copy; {currentYear} Almighty God Worship Church. All Rights Reserved.</p>
+          <p>&copy; {currentYear} Almighty God Fellowship. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

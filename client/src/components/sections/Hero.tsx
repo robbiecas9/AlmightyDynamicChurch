@@ -17,7 +17,7 @@ const Hero = () => {
         <h1 
           className="text-white font-heading text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down"
         >
-          ALMIGHTY GOD WORSHIP CHURCH
+          ALMIGHTY GOD FELLOWSHIP
         </h1>
         
         <p 

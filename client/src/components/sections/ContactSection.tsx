@@ -84,7 +84,7 @@ const ContactSection = () => {
                       <Church className="h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-bold">ALMIGHTY GOD WORSHIP CHURCH</h4>
+                      <h4 className="font-bold">ALMIGHTY GOD FELLOWSHIP</h4>
                       <p>BIBLE COLLEGE JUNCTION,</p>
                       <p>PUTHENCRUZ, ERNAKULAM DIST,</p>
                       <p>KERALA, INDIA</p>
@@ -107,7 +107,7 @@ const ContactSection = () => {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>almightygwc@gmail.com</p>
+                      <p>almightygf@gmail.com</p>
                     </div>
                   </div>
 
@@ -116,7 +116,7 @@ const ContactSection = () => {
                       <Globe className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>www.almightygodworship.com</p>
+                      <p>www.almightygodfellowship.com</p>
                     </div>
                   </div>
                 </div>
