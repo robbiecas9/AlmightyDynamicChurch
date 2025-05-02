@@ -59,32 +59,37 @@ const Dashboard = () => {
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
   
   // Fetch content
-  const { data: heroContent = [] } = useQuery({
+  const { data: heroContentData = [] } = useQuery({
     queryKey: ["/api/cms/content/hero"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
+  const heroContent = Array.isArray(heroContentData) ? heroContentData : [];
   
-  const { data: pastorMessage = [] } = useQuery({
+  const { data: pastorMessageData = [] } = useQuery({
     queryKey: ["/api/cms/content/pastor_message"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
+  const pastorMessage = Array.isArray(pastorMessageData) ? pastorMessageData : [];
   
-  const { data: scriptureBanner = [] } = useQuery({
+  const { data: scriptureBannerData = [] } = useQuery({
     queryKey: ["/api/cms/content/scripture_banner"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
+  const scriptureBanner = Array.isArray(scriptureBannerData) ? scriptureBannerData : [];
   
   // Fetch beliefs
-  const { data: beliefs = [] } = useQuery({
+  const { data: beliefsData = [] } = useQuery({
     queryKey: ["/api/beliefs"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
+  const beliefs = Array.isArray(beliefsData) ? beliefsData : [];
   
   // Fetch meetings
-  const { data: meetings = [] } = useQuery({
+  const { data: meetingsData = [] } = useQuery({
     queryKey: ["/api/meetings"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
+  const meetings = Array.isArray(meetingsData) ? meetingsData : [];
   
   // Mutations for updating content
   const updateContentMutation = useMutation({
