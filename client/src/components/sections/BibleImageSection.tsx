@@ -1,6 +1,6 @@
 const BibleImageSection = () => {
   return (
-    <section className="relative py-24">
+    <section className="relative py-24" id="bible-section">
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"

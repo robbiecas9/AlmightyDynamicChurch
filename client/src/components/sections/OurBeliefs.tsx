@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BeliefCard from "@/components/ui/belief-card";
 import BeliefModal from "@/components/ui/belief-modal";
 import { Belief, beliefData } from "@/lib/church-data";
@@ -25,11 +25,16 @@ const OurBeliefs = () => {
   const visibleBeliefs = showAllBeliefs 
     ? beliefData 
     : beliefData.slice(0, 6);
+    
+  // Debugging: Log the number of beliefs to ensure they're loading
+  useEffect(() => {
+    console.log(`Loaded ${beliefData.length} beliefs, showing ${visibleBeliefs.length}`);
+  }, [visibleBeliefs.length]);
 
   return (
     <section id="about" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="animate-on-scroll">
+        <div className="animate-fade-in-down">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4">
             Our Beliefs
           </h2>
@@ -40,7 +45,7 @@ const OurBeliefs = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visibleBeliefs.map((belief) => (
-              <div key={belief.id}>
+              <div key={belief.id} className="animate-fade-in-down" style={{animationDelay: `${belief.id * 0.1}s`}}>
                 <BeliefCard 
                   belief={belief} 
                   onClick={() => openBeliefModal(belief)} 
