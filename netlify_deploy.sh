@@ -1,16 +1,86 @@
 #!/bin/bash
 
-# Create deployment directory
+# Clean up any existing deployment directory
+rm -rf netlify_deploy
+
+# Create fresh deployment directory
 mkdir -p netlify_deploy
+
+# Create dist directory structure
+mkdir -p netlify_deploy/dist
+
+# Create _redirects file for Netlify to handle SPA routing
+cat > netlify_deploy/dist/_redirects << 'EOL'
+/* /index.html 200
+EOL
 
 # Copy only the necessary files for a static frontend deployment
 cp -r client netlify_deploy/
-cp -r attached_assets netlify_deploy/
+
+# Create a public directory with assets for the static site
+mkdir -p netlify_deploy/public
+cp -r attached_assets/* netlify_deploy/public/
+
+# Copy default images
+cp -r client/src/assets/* netlify_deploy/public/ 2>/dev/null || echo "No assets to copy from client/src/assets"
+
+# Copy the attached assets to standard church image names
+cp -f attached_assets/image_1746177857009.png netlify_deploy/public/church-building.jpg
+cp -f attached_assets/image_1746179729140.png netlify_deploy/public/pastor.jpg
+cp -f attached_assets/image_1746181515514.png netlify_deploy/public/bible-study.jpg
+
+# Copy with appropriate extensions to ensure both formats work
+cp -f netlify_deploy/public/church-building.jpg netlify_deploy/public/church-building.png
+cp -f netlify_deploy/public/pastor.jpg netlify_deploy/public/pastor.png
+cp -f netlify_deploy/public/bible-study.jpg netlify_deploy/public/bible-study.png
+
+# Copy configuration files
 cp netlify.toml netlify_deploy/
 cp netlify_package.json netlify_deploy/package.json
 cp postcss.config.js netlify_deploy/
 cp tailwind.config.ts netlify_deploy/
 cp components.json netlify_deploy/
+
+# Create a modified client/index.html file for the Netlify deployment
+cat > netlify_deploy/client/index.html << 'EOL'
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Almighty God Fellowship</title>
+    <meta name="description" content="A place of love, faith, and community" />
+    <!-- Netlify form handling enabled -->
+    <script>
+      // For static builds handle form submissions via Netlify
+      if (window.location.host.includes('netlify.app') || window.location.host.includes('almightygodfellowship.com')) {
+        console.log('Netlify form handling enabled');
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+EOL
+
+# Create an index.html file directly in the dist directory as a fallback (will be overwritten by build)
+cat > netlify_deploy/dist/index.html << 'EOL'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almighty God Fellowship</title>
+  <meta name="description" content="A place of love, faith, and community" />
+  <meta http-equiv="refresh" content="0;url=/index.html">
+</head>
+<body>
+  <div id="root">Loading...</div>
+</body>
+</html>
+EOL
 
 # Create a minimal shared directory with only the types needed by the frontend
 mkdir -p netlify_deploy/shared
