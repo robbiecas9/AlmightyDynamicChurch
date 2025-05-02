@@ -1,5 +1,4 @@
 import { Belief } from "@/lib/church-data";
-import { motion } from "framer-motion";
 
 interface BeliefCardProps {
   belief: Belief;
