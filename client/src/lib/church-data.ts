@@ -64,6 +64,23 @@ export const scriptureBannerContent: ScriptureBannerContent = {
   reference: "John 14:6"
 };
 
+// Bible Image Section content
+export interface BibleImageContent {
+  content: string;
+  reference: string;
+  imageUrl: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+export const bibleImageContent: BibleImageContent = {
+  content: "Come, let us bow down in worship, let us kneel before the LORD our Maker; for he is our God and we are the people of his pasture, the flock under his care",
+  reference: "Psalms 95: 6,7",
+  imageUrl: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65",
+  buttonText: "Join Our Worship",
+  buttonLink: "#meetings"
+};
+
 // Meeting schedule data
 export const meetingData: Meeting[] = [
   {

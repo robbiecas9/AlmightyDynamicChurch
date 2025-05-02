@@ -1,9 +1,11 @@
+import { bibleImageContent } from "@/lib/church-data";
+
 const BibleImageSection = () => {
   return (
     <section className="relative py-24" id="bible-section">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+          src={`${bibleImageContent.imageUrl}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80`}
           className="object-cover w-full h-full"
           alt="Open Bible"
         />
@@ -14,16 +16,16 @@ const BibleImageSection = () => {
         <div className="max-w-3xl mx-auto text-center text-white">
           <div className="animate-fade-in-down">
             <p className="text-xl md:text-2xl mb-6 scripture">
-              "Come, let us bow down in worship, let us kneel before the LORD our Maker; for he is our God and we are the people of his pasture, the flock under his care"
-              <span className="text-secondary font-semibold">( Psalms 95: 6,7)</span>
+              "{bibleImageContent.content}"
+              <span className="text-secondary font-semibold">( {bibleImageContent.reference})</span>
             </p>
 
             <div className="mt-8">
               <a
-                href="#meetings"
+                href={bibleImageContent.buttonLink}
                 className="bg-white text-primary hover:bg-secondary hover:text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-lg"
               >
-                Join Our Worship
+                {bibleImageContent.buttonText}
               </a>
             </div>
           </div>
