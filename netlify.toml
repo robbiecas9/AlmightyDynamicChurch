@@ -1,9 +1,20 @@
 # netlify.toml
+# Settings for the Netlify build
 [build]
-  command = "npm run build"
   publish = "dist"
+  command = "npm run build"
 
+# Handle SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Headers to ensure security and caching
+[[headers]]
+  for = "/*"
+    [headers.values]
+    cache-control = "public, max-age=0, must-revalidate"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
