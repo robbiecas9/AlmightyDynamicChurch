@@ -59,29 +59,29 @@ const Dashboard = () => {
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
   
   // Fetch content
-  const { data: heroContent } = useQuery({
+  const { data: heroContent = [] } = useQuery({
     queryKey: ["/api/cms/content/hero"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
   
-  const { data: pastorMessage } = useQuery({
+  const { data: pastorMessage = [] } = useQuery({
     queryKey: ["/api/cms/content/pastor_message"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
   
-  const { data: scriptureBanner } = useQuery({
+  const { data: scriptureBanner = [] } = useQuery({
     queryKey: ["/api/cms/content/scripture_banner"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
   
   // Fetch beliefs
-  const { data: beliefs } = useQuery({
+  const { data: beliefs = [] } = useQuery({
     queryKey: ["/api/beliefs"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
   
   // Fetch meetings
-  const { data: meetings } = useQuery({
+  const { data: meetings = [] } = useQuery({
     queryKey: ["/api/meetings"],
     queryFn: getQueryFn({ on401: "returnNull" })
   });
@@ -90,10 +90,7 @@ const Dashboard = () => {
   const updateContentMutation = useMutation({
     mutationFn: async (content: Partial<ContentItem>) => {
       if (!selectedContent) throw new Error("No content selected");
-      return apiRequest(`/api/cms/content/${selectedContent.id}`, {
-        method: "PUT",
-        body: JSON.stringify(content)
-      });
+      return apiRequest(`/api/cms/content/${selectedContent.id}`, "PUT", content);
     },
     onSuccess: () => {
       toast({
@@ -117,10 +114,7 @@ const Dashboard = () => {
   const updateBeliefMutation = useMutation({
     mutationFn: async (belief: Partial<Belief>) => {
       if (!selectedBelief) throw new Error("No belief selected");
-      return apiRequest(`/api/beliefs/${selectedBelief.id}`, {
-        method: "PUT",
-        body: JSON.stringify(belief)
-      });
+      return apiRequest(`/api/beliefs/${selectedBelief.id}`, "PUT", belief);
     },
     onSuccess: () => {
       toast({
@@ -144,10 +138,7 @@ const Dashboard = () => {
   const updateMeetingMutation = useMutation({
     mutationFn: async (meeting: Partial<Meeting>) => {
       if (!selectedMeeting) throw new Error("No meeting selected");
-      return apiRequest(`/api/meetings/${selectedMeeting.id}`, {
-        method: "PUT",
-        body: JSON.stringify(meeting)
-      });
+      return apiRequest(`/api/meetings/${selectedMeeting.id}`, "PUT", meeting);
     },
     onSuccess: () => {
       toast({

@@ -33,7 +33,8 @@ const Navbar = () => {
     { title: "Home", href: "#hero" },
     { title: "Our Belief", href: "#about" },
     { title: "Meetings", href: "#meetings" },
-    { title: "Contact us", href: "#contact" }
+    { title: "Contact us", href: "#contact" },
+    { title: "Admin", href: "/admin" }
   ];
 
   return (
@@ -54,13 +55,23 @@ const Navbar = () => {
         
         <div className="hidden md:flex space-x-8 items-center">
           {navItems.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              className="text-white hover:text-secondary font-medium transition-colors"
-            >
-              {item.title}
-            </a>
+            item.href.startsWith('/') ? (
+              <Link
+                key={index}
+                href={item.href}
+                className="text-white hover:text-secondary font-medium transition-colors"
+              >
+                {item.title}
+              </Link>
+            ) : (
+              <a
+                key={index}
+                href={item.href}
+                className="text-white hover:text-secondary font-medium transition-colors"
+              >
+                {item.title}
+              </a>
+            )
           ))}
         </div>
         

@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
+import Dashboard from "@/pages/admin/Dashboard";
 
 // Layout components
 import Navbar from "@/components/layout/Navbar";
@@ -36,10 +37,19 @@ function HomePage() {
   );
 }
 
+function AdminPage() {
+  return (
+    <div className="font-body text-dark bg-light min-h-screen">
+      <Dashboard />
+    </div>
+  );
+}
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
+      <Route path="/admin" component={AdminPage} />
       <Route component={NotFound} />
     </Switch>
   );
