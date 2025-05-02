@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest, getQueryFn } from "@/lib/queryClient";
@@ -58,6 +58,59 @@ const Dashboard = () => {
   const [selectedContent, setSelectedContent] = useState<ContentItem | null>(null);
   const [selectedBelief, setSelectedBelief] = useState<Belief | null>(null);
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
+  const [newMeeting, setNewMeeting] = useState<Partial<Meeting> | null>(null);
+  
+  // Add a mutation for creating new meetings
+  const createMeetingMutation = useMutation({
+    mutationFn: async (meeting: InsertMeeting) => {
+      return apiRequest('/api/meetings', 'POST', meeting);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Meeting created",
+        description: "Your new worship service has been added."
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/meetings"] });
+      setNewMeeting(null);
+    },
+    onError: (error) => {
+      toast({
+        title: "Error",
+        description: "Failed to create meeting. Please try again.",
+        variant: "destructive"
+      });
+      console.error("Error creating meeting:", error);
+    }
+  });
+  
+  // Handle new meeting form submission
+  const handleNewMeetingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newMeeting) return;
+    if (!newMeeting.title || !newMeeting.day || !newMeeting.time) {
+      toast({
+        title: "Validation error",
+        description: "Title, day, and time are required fields.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    createMeetingMutation.mutate(newMeeting as InsertMeeting);
+  };
+
+  const initializeNewMeeting = () => {
+    setNewMeeting({
+      title: "",
+      day: "",
+      time: "",
+      location: "",
+      description: "",
+      sortOrder: meetings.length + 1,
+      isActive: true
+    });
+    setSelectedMeeting(null);
+  };
   
   // Fetch content
   const { data: heroContentData = [] } = useQuery({
