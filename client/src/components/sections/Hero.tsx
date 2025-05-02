@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const Hero = () => {
   return (
     <section 
@@ -16,51 +14,36 @@ const Hero = () => {
       </div>
       
       <div className="container mx-auto px-4 z-10 text-center">
-        <motion.h1 
-          className="text-white font-heading text-4xl md:text-6xl font-bold mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <h1 
+          className="text-white font-heading text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down"
         >
           ALMIGHTY GOD WORSHIP CHURCH
-        </motion.h1>
+        </h1>
         
-        <motion.p 
-          className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        <p 
+          className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in-down"
         >
           BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA
-        </motion.p>
+        </p>
         
-        <motion.div 
-          className="mb-8 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+        <div 
+          className="mb-8 max-w-3xl mx-auto animate-fade-in-down"
         >
           <h2 className="text-secondary font-heading text-2xl md:text-3xl mb-2">FOLLOW JESUS</h2>
           <p className="text-white text-xl md:text-2xl">FOR PEACE AND ETERNAL LIFE</p>
-        </motion.div>
+        </div>
         
-        <motion.div 
-          className="scripture bg-white bg-opacity-10 p-6 rounded-lg max-w-3xl mx-auto text-white"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+        <div 
+          className="scripture bg-white bg-opacity-10 p-6 rounded-lg max-w-3xl mx-auto text-white animate-fade-in-down"
         >
           <p className="text-lg md:text-xl">
             "Come, let us bow down in worship, let us kneel before the LORD our Maker; for he is our God and we are the people of his pasture, the flock under his care"
             <span className="text-secondary font-semibold">( Psalms 95: 6,7)</span>
           </p>
-        </motion.div>
+        </div>
         
-        <motion.div 
-          className="mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+        <div 
+          className="mt-12 animate-fade-in-down"
         >
           <a 
             href="#meetings" 
@@ -74,7 +57,7 @@ const Hero = () => {
           >
             Learn More
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
