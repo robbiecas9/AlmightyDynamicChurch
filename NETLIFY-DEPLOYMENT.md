@@ -1,11 +1,18 @@
 # Netlify Deployment Guide for Almighty God Fellowship Website
 
-This guide explains how to deploy the Almighty God Fellowship website to Netlify as a static site.
+This guide explains how to deploy the Almighty God Fellowship website to Netlify as a completely static site, eliminating the need for any backend server or database.
+
+## What's Changed
+
+1. All content is now stored directly in the code (`client/src/lib/church-data.ts`)
+2. The contact form has been modified to use Netlify's built-in form handling
+3. No database or API calls are needed - the entire site is static
+4. Added image optimization for better performance
 
 ## Prerequisites
 
 1. A Netlify account (sign up at [netlify.com](https://netlify.com))
-2. Git installed on your local machine
+2. Node.js and npm installed on your local machine
 
 ## Deployment Process
 
@@ -98,8 +105,45 @@ To use your custom domain (almightygodfellowship.com):
 2. Click "Add custom domain" and enter your domain name.
 3. Follow the instructions to configure your DNS settings.
 
+## Content Updates
+
+To update the content of your website after deployment:
+
+1. Edit the appropriate data in `client/src/lib/church-data.ts`
+   - For basic church information (name, address, etc.)
+   - For beliefData array to modify belief statements
+   - For meetingData array to update service times and descriptions
+
+2. For pastor's message or other sectional content, find the relevant objects:
+   ```javascript
+   export const pastorMessageContent = {
+     title: "Message From Our Pastor",
+     subtitle: "Rev. Dr. Jacob Mathai",
+     content: "Your updated message here...",
+     // other fields
+   };
+   ```
+
+3. After making changes, run the deployment script again and redeploy to Netlify
+
+## Image Updates
+
+To update images:
+
+1. Add your new images to the `attached_assets` directory
+2. Update the image paths in `church-data.ts` to point to your new images
+3. The deployment script will handle copying these to the appropriate location
+
 ## Troubleshooting
 
-- If your forms aren't working, check the form setup in the HTML to ensure it follows Netlify Forms requirements.
-- If styles are missing, check that the build process is completing successfully and CSS is being generated.
-- For deployment issues, check the deployment logs in the Netlify dashboard.
+- **Forms not working**: Check that the HTML form includes both the hidden form definition and the `data-netlify="true"` attribute on your actual form.
+
+- **Images not displaying**: Make sure image paths are correct and images are properly copied during the build process. Check for case sensitivity in file paths.
+
+- **Routing issues**: If pages aren't loading correctly when accessed directly by URL, verify that the `_redirects` file is properly set up in your published directory with the rule `/* /index.html 200`.
+
+- **Styles missing**: Check that the build process is completing successfully and CSS is being generated. Look for error messages in the build logs.
+
+- **Contact form submissions**: To view form submissions, go to your Netlify dashboard, select your site, and click on the "Forms" tab.
+
+- **For any other deployment issues**: Check the deployment logs in the Netlify dashboard for specific error messages.
