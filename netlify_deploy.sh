@@ -1,38 +1,54 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+echo "Starting Netlify deployment preparation..."
+
 # Clean up any existing deployment directory
 rm -rf netlify_deploy
+echo "✓ Cleaned up existing deployment directory"
 
-# Create fresh deployment directory
-mkdir -p netlify_deploy
-
-# Create dist directory structure
+# Create fresh deployment directory with proper structure
 mkdir -p netlify_deploy/dist
+mkdir -p netlify_deploy/public
+mkdir -p netlify_deploy/client/src/assets
+mkdir -p netlify_deploy/shared
+echo "✓ Created directory structure"
 
 # Create _redirects file for Netlify to handle SPA routing
 cat > netlify_deploy/dist/_redirects << 'EOL'
 /* /index.html 200
 EOL
+echo "✓ Created SPA routing config (_redirects)"
 
-# Copy only the necessary files for a static frontend deployment
-cp -r client netlify_deploy/
+# Copy public assets directly to public directory
+echo "Copying assets..."
+cp -r attached_assets/* netlify_deploy/public/ 2>/dev/null || echo "No attached assets found"
 
-# Create a public directory with assets for the static site
-mkdir -p netlify_deploy/public
-cp -r attached_assets/* netlify_deploy/public/
+# Copy assets from client/src if they exist
+if [ -d "client/src/assets" ]; then
+  cp -r client/src/assets/* netlify_deploy/public/ 2>/dev/null
+  echo "✓ Copied assets from client/src/assets"
+fi
 
-# Copy default images
-cp -r client/src/assets/* netlify_deploy/public/ 2>/dev/null || echo "No assets to copy from client/src/assets"
+# Copy specific assets with appropriate names
+cp -f attached_assets/image_1746177857009.png netlify_deploy/public/church-building.jpg 2>/dev/null || echo "Warning: church-building image not found"
+cp -f attached_assets/image_1746179729140.png netlify_deploy/public/pastor.jpg 2>/dev/null || echo "Warning: pastor image not found"
+cp -f attached_assets/image_1746181515514.png netlify_deploy/public/bible-study.jpg 2>/dev/null || echo "Warning: bible-study image not found"
 
-# Copy the attached assets to standard church image names
-cp -f attached_assets/image_1746177857009.png netlify_deploy/public/church-building.jpg
-cp -f attached_assets/image_1746179729140.png netlify_deploy/public/pastor.jpg
-cp -f attached_assets/image_1746181515514.png netlify_deploy/public/bible-study.jpg
+# Create duplicates with both extensions
+for img in church-building pastor bible-study; do
+  if [ -f "netlify_deploy/public/$img.jpg" ]; then
+    cp -f netlify_deploy/public/$img.jpg netlify_deploy/public/$img.png
+  fi
+done
+echo "✓ Prepared image assets with multiple formats"
 
-# Copy with appropriate extensions to ensure both formats work
-cp -f netlify_deploy/public/church-building.jpg netlify_deploy/public/church-building.png
-cp -f netlify_deploy/public/pastor.jpg netlify_deploy/public/pastor.png
-cp -f netlify_deploy/public/bible-study.jpg netlify_deploy/public/bible-study.png
+# Copy client files (selectively to avoid copying node_modules)
+echo "Copying client source files..."
+cp -r client/src netlify_deploy/client/
+cp client/index.html netlify_deploy/client/
 
 # Copy configuration files
 cp netlify.toml netlify_deploy/
@@ -159,6 +175,17 @@ cat > netlify_deploy/tsconfig.node.json << 'EOL'
 }
 EOL
 
+# Copy all church data and UI components as well
+cp -r client/src/lib/church-data.ts netlify_deploy/client/src/lib/ || echo "church-data.ts already copied"
+
+# Ensure all the needed directories and files are copied
+echo "Copying essential files for deployment..."
+mkdir -p netlify_deploy/client/src/types
+cp -r client/src/types/* netlify_deploy/client/src/types/ 2>/dev/null || echo "Creating empty types directory"
+
+# Copy all original components 
+cp -r client/src/components netlify_deploy/client/src/ 2>/dev/null || mkdir -p netlify_deploy/client/src/components
+
 # Create a Netlify-specific vite.config.ts
 cat > netlify_deploy/vite.config.ts << 'EOL'
 import { defineConfig } from "vite";
@@ -225,8 +252,17 @@ exports.handler = async (event, context) => {
 };
 EOL
 
-# Create a modified version of the ContactSection component for Netlify form handling
+# Copy all UI components and hooks to ensure they're available
+mkdir -p netlify_deploy/client/src/components/ui
 mkdir -p netlify_deploy/client/src/components/sections
+mkdir -p netlify_deploy/client/src/hooks
+
+# Copy UI components (recursively)
+cp -r client/src/components/ui netlify_deploy/client/src/components/
+cp -r client/src/hooks netlify_deploy/client/src/
+echo "✓ Copied UI components and hooks"
+
+# Create a modified version of the ContactSection component for Netlify form handling
 cat > netlify_deploy/client/src/components/sections/ContactSection.tsx << 'EOL'
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -491,6 +527,36 @@ const ContactSection = () => {
 
 export default ContactSection;
 EOL
+
+# Final build steps for Netlify deployment
+echo "\n\n✅ All files prepared, proceeding to final packaging phase..."
+
+# Add a build script to package.json if it doesn't exist
+node -e '
+const fs = require("fs");
+const path = require("path");
+const packagePath = path.join(process.cwd(), "netlify_deploy/package.json");
+const pkg = require(packagePath);
+if (!pkg.scripts || !pkg.scripts.build) {
+  pkg.scripts = pkg.scripts || {};
+  pkg.scripts.build = "vite build";
+  fs.writeFileSync(packagePath, JSON.stringify(pkg, null, 2));
+  console.log("✅ Added build script to package.json");
+}
+'
+
+# Final message with instructions
+echo ""
+echo "⭐️ Deployment package created successfully in netlify_deploy/"
+echo "⭐️ To deploy to Netlify:"
+echo "  1. cd netlify_deploy"
+echo "  2. npm install"
+echo "  3. npm run build"
+echo "  4. Deploy the 'dist' directory to Netlify"
+echo ""
+echo "🔗 Or use Netlify CLI: netlify deploy --dir=dist --prod"
+echo ""
+
 
 # Create a church-data.ts file with all the static data
 mkdir -p netlify_deploy/client/src/lib
