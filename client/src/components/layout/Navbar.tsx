@@ -39,23 +39,25 @@ const Navbar = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-transparent"
+        scrolled 
+          ? "bg-primary bg-opacity-95 shadow-lg" 
+          : "bg-primary bg-opacity-40"
       }`}
     >
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <a 
           href="#hero" 
-          className="text-primary font-heading font-bold text-xl md:text-2xl"
+          className="text-white font-heading font-bold text-xl md:text-2xl"
         >
-          Almighty God Worship Church
+          AGW Church
         </a>
         
-        <div className="hidden md:flex space-x-6 items-center">
+        <div className="hidden md:flex space-x-8 items-center">
           {navItems.map((item, index) => (
             <a
               key={index}
               href={item.href}
-              className="text-dark hover:text-primary transition-colors"
+              className="text-white hover:text-secondary font-medium transition-colors"
             >
               {item.title}
             </a>
@@ -63,7 +65,7 @@ const Navbar = () => {
         </div>
         
         <button 
-          className="md:hidden text-dark focus:outline-none" 
+          className="md:hidden text-white focus:outline-none" 
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -73,7 +75,7 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       <div 
-        className={`md:hidden bg-white w-full shadow-md ${
+        className={`md:hidden bg-primary bg-opacity-95 w-full shadow-md ${
           isOpen ? "block" : "hidden"
         }`}
       >
@@ -82,7 +84,7 @@ const Navbar = () => {
             <a
               key={index}
               href={item.href}
-              className="text-dark hover:text-primary transition-colors py-2"
+              className="text-white hover:text-secondary transition-colors py-2 font-medium"
               onClick={closeMenu}
             >
               {item.title}

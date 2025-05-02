@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-overlay"></div>
       </div>
       
-      <div className="container mx-auto px-4 z-10 text-center">
+      <div className="container mx-auto px-4 z-10 text-center pt-16">
         <h1 
           className="text-white font-heading text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down"
         >
@@ -21,20 +21,20 @@ const Hero = () => {
         </h1>
         
         <p 
-          className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in-down"
+          className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-1"
         >
           BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA
         </p>
         
         <div 
-          className="mb-8 max-w-3xl mx-auto animate-fade-in-down"
+          className="mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-2"
         >
           <h2 className="text-secondary font-heading text-2xl md:text-3xl mb-2">FOLLOW JESUS</h2>
           <p className="text-white text-xl md:text-2xl">FOR PEACE AND ETERNAL LIFE</p>
         </div>
         
         <div 
-          className="scripture bg-white bg-opacity-10 p-6 rounded-lg max-w-3xl mx-auto text-white animate-fade-in-down"
+          className="scripture bg-white bg-opacity-10 p-6 rounded-lg max-w-3xl mx-auto text-white animate-fade-in-down animate-delay-3"
         >
           <p className="text-lg md:text-xl">
             "Come, let us bow down in worship, let us kneel before the LORD our Maker; for he is our God and we are the people of his pasture, the flock under his care"
@@ -43,7 +43,7 @@ const Hero = () => {
         </div>
         
         <div 
-          className="mt-12 animate-fade-in-down"
+          className="mt-12 animate-fade-in-down animate-delay-4"
         >
           <a 
             href="#meetings" 
