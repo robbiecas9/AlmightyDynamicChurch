@@ -40,7 +40,11 @@ function HomePage() {
 function AdminPage() {
   return (
     <div className="font-body text-dark bg-light min-h-screen">
-      <Dashboard />
+      <Navbar />
+      <div className="pt-24">
+        <Dashboard />
+      </div>
+      <Footer />
     </div>
   );
 }

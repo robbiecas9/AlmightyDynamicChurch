@@ -7,7 +7,7 @@ const Dashboard = () => {
     <div className="container mx-auto p-6">
       <div className="mb-8">
         <Link href="/">
-          <a className="text-primary hover:underline mb-8 inline-block">&larr; Back to Website</a>
+          <span className="text-primary hover:underline mb-8 inline-block cursor-pointer">&larr; Back to Website</span>
         </Link>
       </div>
       <h1 className="text-3xl font-bold mb-8">Website Content Management</h1>
