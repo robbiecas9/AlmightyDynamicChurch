@@ -42,6 +42,14 @@ This guide explains how to deploy the Almighty God Fellowship website to Netlify
 
 ## Important Notes
 
+### Static Site Architecture
+
+This deployment is configured as a fully static website with no backend requirement. All data is stored directly in the code:
+
+1. Church information (about, services, etc.) is stored in static JavaScript objects in `lib/church-data.ts`
+2. The contact form uses Netlify's built-in form handling
+3. No database or server APIs are required
+
 ### Form Handling
 
 The contact form is configured to work with Netlify Forms. The essential elements are:
@@ -62,6 +70,20 @@ The contact form is configured to work with Netlify Forms. The essential element
      <input type="hidden" name="form-name" value="contact" />
      <!-- Form fields -->
    </form>
+   ```
+
+3. When the form is submitted, the handler creates a FormData object and submits it directly to Netlify:
+   ```javascript
+   const formData = new FormData();
+   formData.append("form-name", "contact");
+   Object.entries(data).forEach(([key, value]) => {
+     formData.append(key, value);
+   });
+   
+   await fetch("/", {
+     method: "POST",
+     body: formData,
+   });
    ```
 
 ### Environment Variables
