@@ -50,7 +50,7 @@ const Navbar = () => {
           href="#hero" 
           className="text-white font-heading font-bold text-xl md:text-2xl"
         >
-          AGW Church
+          AGF
         </a>
         
         <div className="hidden md:flex space-x-8 items-center">

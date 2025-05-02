@@ -27,7 +27,7 @@ const PastorMessage = () => {
             <div className="md:w-2/3 md:pl-12 animate-fade-in-down animate-delay-3">
               <div className="prose prose-lg max-w-none">
                 <p className="mb-4">
-                  ALMIGHTY GOD worship church is a reformed church and spiritual movement inspired by the Holy spirit and totally based on the teachings of Jesus Christ. As per the teachings of Jesus Christ in John 17: 3 the ONLY ONE AND TRUE God is the ALMIGHTY JEHOVAH God, the creator of heavens and earth (Genesis 1: 1, 2:4, 17: 1).
+                  ALMIGHTY GOD Fellowship is a reformed church and spiritual movement inspired by the Holy spirit and totally based on the teachings of Jesus Christ. As per the teachings of Jesus Christ in John 17: 3 the ONLY ONE AND TRUE God is the ALMIGHTY JEHOVAH God, the creator of heavens and earth (Genesis 1: 1, 2:4, 17: 1).
                 </p>
 
                 <p className="mb-4">
