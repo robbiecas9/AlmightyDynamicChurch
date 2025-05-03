@@ -15,6 +15,7 @@ import Hero from "@/components/sections/Hero";
 import ScriptureBanner from "@/components/sections/ScriptureBanner";
 import PastorMessage from "@/components/sections/PastorMessage";
 import OurBeliefs from "@/components/sections/OurBeliefs";
+import BibleImageSection from "@/components/sections/BibleImageSection";
 import MeetingsSection from "@/components/sections/MeetingsSection";
 import ContactSection from "@/components/sections/ContactSection";
 
@@ -27,6 +28,7 @@ function HomePage() {
         <ScriptureBanner />
         <PastorMessage />
         <OurBeliefs />
+        <BibleImageSection />
         <MeetingsSection />
         <ContactSection />
       </main>

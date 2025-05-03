@@ -37,7 +37,7 @@ fi
 
 # Copy specific assets with appropriate names
 cp -f attached_assets/image_1746177857009.png netlify_deploy/public/church-building.jpg 2>/dev/null || echo "Warning: church-building image not found"
-cp -f attached_assets/image_1746179729140.png netlify_deploy/public/pastor.jpg 2>/dev/null || echo "Warning: pastor image not found"
+cp -f attached_assets/image_1746262764519.png netlify_deploy/public/pastor.jpg 2>/dev/null || echo "Warning: pastor image not found"
 cp -f attached_assets/image_1746181515514.png netlify_deploy/public/bible-study.jpg 2>/dev/null || echo "Warning: bible-study image not found"
 
 # Create duplicates with both extensions

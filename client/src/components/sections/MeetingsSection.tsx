@@ -24,11 +24,7 @@ const MeetingsSection = () => {
                 Fellowship fosters a sense of community and support, allowing believers to share their joys, struggles, and faith journeys with one another.
               </p>
 
-              <img
-                src="https://images.unsplash.com/photo-1513269890889-8e4e362e5582?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                className="rounded-lg shadow-lg w-full h-64 object-cover"
-                alt="Christian fellowship"
-              />
+              {/* Image removed */}
             </div>
 
             <div className="lg:w-1/2 animate-fade-in-down animate-delay-3">
@@ -66,14 +62,7 @@ const MeetingsSection = () => {
                   ))}
                 </div>
 
-                <div className="mt-8">
-                  <img
-                    src="https://images.unsplash.com/photo-1534691157105-7ca4adf0989e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    className="rounded-lg shadow-lg w-full h-64 object-cover"
-                    alt="Worship service"
-                  />
-                  <p className="text-center mt-2 text-gray-600">Worship Meetings</p>
-                </div>
+                {/* Second image removed */}
               </div>
             </div>
           </div>

@@ -24,7 +24,7 @@ const PastorMessage = () => {
             <div className="md:w-1/3 mb-8 md:mb-0 animate-fade-in-down animate-delay-2">
               <div className="relative rounded-full overflow-hidden w-64 h-64 mx-auto border-4 border-secondary shadow-lg">
                 <img
-                  src={`${pastorMessageContent.imageUrl}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80`}
+                  src={pastorMessageContent.imageUrl}
                   className="object-cover w-full h-full"
                   alt="Pastor"
                 />
