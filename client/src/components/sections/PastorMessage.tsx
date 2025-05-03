@@ -11,18 +11,18 @@ const PastorMessage = () => {
   }, [] as string[]);
 
   return (
-    <section id="pastor-message" className="py-16 bg-white">
+    <section id="pastor-message" className="py-10 md:py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
           <h2
-            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-8 md:mb-16 fancy-heading animate-heading"
+            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-16 fancy-heading animate-heading"
           >
             {pastorMessageContent.title.toUpperCase()}
           </h2>
 
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/3 mb-8 md:mb-0 animate-fade-in-down animate-delay-2">
-              <div className="relative rounded-full overflow-hidden w-64 h-64 mx-auto border-4 border-secondary shadow-lg">
+          <div className="flex flex-col md:flex-row items-center mt-2 md:mt-0">
+            <div className="md:w-1/3 mb-4 md:mb-0 animate-fade-in-down animate-delay-2">
+              <div className="relative rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 mx-auto border-4 border-secondary shadow-lg">
                 <img
                   src={pastorMessageContent.imageUrl}
                   className="object-cover w-full h-full"

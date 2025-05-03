@@ -32,14 +32,14 @@ const OurBeliefs = () => {
   }, [visibleBeliefs.length]);
 
   return (
-    <section id="about" className="py-16 bg-gray-50">
+    <section id="about" className="py-10 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-6 fancy-heading animate-heading">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-6 fancy-heading animate-heading">
             Our Beliefs
           </h2>
           
-          <p className="text-center text-xl text-gray-600 mb-12">
+          <p className="text-center text-lg md:text-xl text-gray-600 mb-6 md:mb-12">
             Our beliefs are based on Bible principles.
           </p>
           
@@ -54,7 +54,7 @@ const OurBeliefs = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-6 md:mt-12">
             <button 
               onClick={toggleShowAllBeliefs}
               className="bg-primary hover:bg-opacity-90 text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-lg"

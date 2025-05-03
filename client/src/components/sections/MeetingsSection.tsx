@@ -3,14 +3,14 @@ import { meetingData } from "@/lib/church-data";
 
 const MeetingsSection = () => {
   return (
-    <section id="meetings" className="py-16 bg-white">
+    <section id="meetings" className="py-10 md:py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-8 md:mb-16 fancy-heading animate-heading">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-16 fancy-heading animate-heading">
             Worship Services & Meetings
           </h2>
 
-          <div className="flex flex-col lg:flex-row gap-6 md:gap-12 items-stretch">
+          <div className="flex flex-col lg:flex-row gap-2 md:gap-12 items-stretch mt-2 md:mt-0">
             <div className="lg:w-1/2 animate-fade-in-down animate-delay-2 flex flex-col justify-center p-2 md:p-4 pt-4 md:pt-8">
               <p className="text-lg mb-4 md:mb-8">
                 Our Christian meetings serve as gatherings where believers come together to worship, study scripture, pray, and fellowship with one another. Hebrews 10:25 says, "And let us not neglect our meeting together, as some people do, but encourage one another, especially now that the day of his return is drawing near."
@@ -31,7 +31,7 @@ const MeetingsSection = () => {
                   Worship Meeting Timings
                 </h3>
 
-                <div className="mb-8">
+                <div className="mb-4 md:mb-8">
                   <div className="flex items-center justify-center mb-4">
                     <span className="text-secondary mr-3 text-xl">
                       <Calendar className="h-6 w-6" />
