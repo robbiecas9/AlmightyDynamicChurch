@@ -8,6 +8,10 @@ const BibleImageSection = () => {
           src={bibleImageContent.imageUrl}
           className="object-cover w-full h-full"
           alt="Open Bible"
+          onError={(e) => {
+            console.error('Failed to load image:', bibleImageContent.imageUrl);
+            e.currentTarget.src = '/bible-study.jpg';
+          }}
         />
         <div className="absolute inset-0 bg-overlay"></div>
       </div>
