@@ -6,7 +6,7 @@ const MeetingsSection = () => {
     <section id="meetings" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12 animate-fade-in-down animate-delay-1">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-16 fancy-heading animate-heading">
             Worship Services & Meetings
           </h2>
 
@@ -27,7 +27,7 @@ const MeetingsSection = () => {
 
             <div className="lg:w-1/2 animate-fade-in-down animate-delay-3 flex flex-col">
               <div className="bg-gray-50 rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl flex-grow flex flex-col">
-                <h3 className="text-2xl font-heading font-bold text-primary mb-6 text-center">
+                <h3 className="text-2xl font-heading font-bold text-primary mb-10 text-center fancy-heading-center">
                   Worship Meeting Timings
                 </h3>
 

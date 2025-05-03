@@ -35,7 +35,7 @@ const OurBeliefs = () => {
     <section id="about" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-6 fancy-heading animate-heading">
             Our Beliefs
           </h2>
           
