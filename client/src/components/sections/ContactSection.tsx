@@ -2,25 +2,20 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
-  FormMessage 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { 
-  Church, 
-  Phone, 
-  Mail, 
-  Globe 
-} from "lucide-react";
+import { Church, Phone, Mail, Globe } from "lucide-react";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -47,17 +42,19 @@ const ContactSection = () => {
   const onSubmit = async (data: ContactFormValues) => {
     try {
       await apiRequest("POST", "/api/contact", data);
-      
+
       toast({
         title: "Message Sent!",
-        description: "Thank you for your message. We will get back to you soon.",
+        description:
+          "Thank you for your message. We will get back to you soon.",
       });
-      
+
       form.reset();
     } catch (error) {
       toast({
         title: "Error Sending Message",
-        description: "There was a problem sending your message. Please try again.",
+        description:
+          "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
     }
@@ -107,10 +104,9 @@ const ContactSection = () => {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>almightygwc@gmail.com</p>
+                      <p>almightygf@gmail.com</p>
                     </div>
                   </div>
-
                   <div className="flex">
                     <div className="text-secondary mr-4">
                       <Globe className="h-5 w-5" />
@@ -142,7 +138,10 @@ const ContactSection = () => {
                 </h3>
 
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                  >
                     <FormField
                       control={form.control}
                       name="name"
@@ -221,7 +220,9 @@ const ContactSection = () => {
                       className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg"
                       disabled={form.formState.isSubmitting}
                     >
-                      {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+                      {form.formState.isSubmitting
+                        ? "Sending..."
+                        : "Send Message"}
                     </Button>
                   </form>
                 </Form>
