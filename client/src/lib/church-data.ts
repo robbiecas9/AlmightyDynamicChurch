@@ -43,7 +43,7 @@ export const heroContent: HeroContent = {
   title: "ALMIGHTY GOD FELLOWSHIP",
   subtitle: "BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA",
   content: "FOLLOW JESUS FOR PEACE AND ETERNAL LIFE",
-  imageUrl: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57",
+  imageUrl: "/church-building.jpg",
   buttonText: "Join Our Worship",
   buttonLink: "#meetings"
 };
