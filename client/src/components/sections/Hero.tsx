@@ -5,7 +5,7 @@ const Hero = () => {
     <section id="hero" className="relative py-20 md:py-32">
       <div className="absolute inset-0 z-0">
         <img 
-          src="/pastor.jpg"
+          src="/church-building.jpg"
           className="object-cover w-full h-full" 
           alt="Church worship" 
         />
