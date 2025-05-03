@@ -55,7 +55,7 @@ export const pastorMessageContent: PastorMessageContent = {
   content: "ALMIGHTY GOD Fellowship is a reformed church and spiritual movement inspired by the Holy spirit and totally based on the teachings of Jesus Christ. As per the teachings of Jesus Christ in John 17: 3 the ONLY ONE AND TRUE God is the ALMIGHTY JEHOVAH God, the creator of heavens and earth (Genesis 1: 1, 2:4, 17: 1). As per John 4: 23,24 and Mathew 4: 10, Jesus said to worship ONLY THE FATHER in spirit and truth. According to Rev 5: 13 people are expected to give glory and express thanks and gratitude to Jesus, the son of God, our saviour who died for us on the cross of Calvary. We encourage people of all nations to worship Almighty Jehovah God through Jesus Christ. You are welcome to join our worship meetings on every Sundays.",
   name: "Rev Dr. Jacob Mathai",
   position: "Senior Pastor",
-  imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136"
+  imageUrl: "/image_1746262764519.png"
 };
 
 // Static content for the Scripture Banner

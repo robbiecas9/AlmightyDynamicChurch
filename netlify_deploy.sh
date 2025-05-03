@@ -26,6 +26,9 @@ echo "✓ Created SPA routing config (_redirects)"
 echo "Copying assets..."
 cp -r attached_assets/* netlify_deploy/public/ 2>/dev/null || echo "No attached assets found"
 
+# Ensure pastor's image is copied
+cp attached_assets/image_1746262764519.png netlify_deploy/public/ 2>/dev/null || echo "Pastor image not found, will need to be added manually"
+
 # Copy assets from client/src if they exist
 if [ -d "client/src/assets" ]; then
   cp -r client/src/assets/* netlify_deploy/public/ 2>/dev/null
