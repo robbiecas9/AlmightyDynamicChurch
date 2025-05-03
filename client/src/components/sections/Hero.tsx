@@ -1,11 +1,12 @@
 import { heroContent } from "@/lib/church-data";
+import worshipSunsetImage from "../../assets/worship-sunset.jpg";
 
 const Hero = () => {
   return (
     <section id="hero" className="relative py-20 md:py-32">
       <div className="absolute inset-0 z-0">
         <img 
-          src="/worship-sunset.jpg" 
+          src={worshipSunsetImage} 
           className="object-cover w-full h-full" 
           alt="Person worshiping at sunset" 
         />
