@@ -15,7 +15,7 @@ const PastorMessage = () => {
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
           <h2
-            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-16 fancy-heading animate-heading"
+            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-8 md:mb-16 fancy-heading animate-heading"
           >
             {pastorMessageContent.title.toUpperCase()}
           </h2>
@@ -36,9 +36,9 @@ const PastorMessage = () => {
             </div>
 
             <div className="md:w-2/3 md:pl-12 animate-fade-in-down animate-delay-3">
-              <div className="prose prose-lg max-w-none">
+              <div className="prose prose-base md:prose-lg max-w-none">
                 {paragraphs.map((paragraph, index) => (
-                  <p key={index} className={index === paragraphs.length - 1 ? "font-semibold" : "mb-4"}>
+                  <p key={index} className={index === paragraphs.length - 1 ? "font-semibold" : "mb-3 md:mb-4"}>
                     {paragraph}
                   </p>
                 ))}
