@@ -3,7 +3,7 @@ import { meetingData } from "@/lib/church-data";
 
 const MeetingsSection = () => {
   return (
-    <section id="meetings" className="py-16 bg-gray-100">
+    <section id="meetings" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="animate-fade-in-down">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12 animate-fade-in-down animate-delay-1">
