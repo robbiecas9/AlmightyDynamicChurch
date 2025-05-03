@@ -178,6 +178,10 @@
   position: relative;
   display: inline-block;
   padding-bottom: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
 }
 
 .fancy-heading::before {
@@ -208,6 +212,10 @@
   position: relative;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
 }
 
 .fancy-heading-center::after {
