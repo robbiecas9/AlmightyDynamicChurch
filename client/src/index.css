@@ -245,3 +245,19 @@
 .animate-heading {
   animation: slideInFromBottom 0.7s ease-out forwards;
 }
+
+/* Mobile menu animation */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}

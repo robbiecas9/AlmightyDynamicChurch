@@ -107,7 +107,7 @@ const ContactSection = () => {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>almightygf@gmail.com</p>
+                      <p>almightygwc@gmail.com</p>
                     </div>
                   </div>
 
