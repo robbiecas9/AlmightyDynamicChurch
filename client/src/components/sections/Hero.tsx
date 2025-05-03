@@ -4,18 +4,23 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="relative h-screen flex items-center justify-center"
+      className="relative min-h-screen flex items-center justify-center"
+      style={{ paddingTop: "60px" }} // Add padding for the navbar
     >
       <div className="absolute inset-0 z-0">
         <img 
           src={heroContent.imageUrl} 
           className="object-cover w-full h-full" 
           alt="Church worship" 
+          onError={(e) => {
+            console.error('Failed to load image:', heroContent.imageUrl);
+            e.currentTarget.src = '/church-building.jpg';
+          }}
         />
         <div className="absolute inset-0 bg-overlay"></div>
       </div>
       
-      <div className="container mx-auto px-4 z-10 text-center pt-16">
+      <div className="container mx-auto px-4 z-10 text-center">
         <h1 
           className="text-white font-heading text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down"
         >

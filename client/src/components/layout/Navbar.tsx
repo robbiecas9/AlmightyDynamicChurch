@@ -43,13 +43,14 @@ const Navbar = () => {
           ? "bg-primary bg-opacity-95 shadow-lg" 
           : "bg-primary bg-opacity-40"
       }`}
+      style={{ height: "60px" }}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="container mx-auto h-full px-4 flex justify-between items-center">
         <a 
           href="#hero" 
           className="text-white font-heading font-bold text-xl md:text-2xl"
         >
-          AGF
+          ALMIGHTY GOD FELLOWSHIP
         </a>
         
         <div className="hidden md:flex space-x-8 items-center">
