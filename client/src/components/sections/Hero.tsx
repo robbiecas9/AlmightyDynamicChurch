@@ -2,51 +2,26 @@ import { heroContent } from "@/lib/church-data";
 
 const Hero = () => {
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-screen flex items-center justify-center"
-      style={{ paddingTop: "60px" }} // Add padding for the navbar
-    >
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={heroContent.imageUrl} 
-          className="object-cover w-full h-full" 
-          alt="Church worship" 
-          onError={(e) => {
-            console.error('Failed to load image:', heroContent.imageUrl);
-            e.currentTarget.src = '/church-building.jpg';
-          }}
-        />
-        <div className="absolute inset-0 bg-overlay"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 z-10 text-center">
-        <h1 
-          className="text-white font-heading text-4xl md:text-6xl font-bold mb-6 animate-fade-in-down"
-        >
-          {heroContent.title}
+    <section id="hero" className="bg-gray-900 py-20 md:py-32">
+      <div className="container mx-auto px-4 text-center">
+        <h1 className="text-white font-heading text-4xl md:text-6xl font-bold mb-6">
+          ALMIGHTY GOD FELLOWSHIP
         </h1>
         
-        <p 
-          className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-1"
-        >
-          {heroContent.subtitle}
+        <p className="text-white text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          BIBLE COLLEGE JUNCTION, PUTHENCRUZ, ERNAKULAM DIST, KERALA
         </p>
         
-        <div 
-          className="mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-2"
-        >
-          <p className="text-white text-xl md:text-2xl">{heroContent.content}</p>
+        <div className="mb-8 max-w-3xl mx-auto">
+          <p className="text-white text-xl md:text-2xl">FOLLOW JESUS FOR PEACE AND ETERNAL LIFE</p>
         </div>
         
-        <div 
-          className="mt-12 animate-fade-in-down animate-delay-4"
-        >
+        <div className="mt-12">
           <a 
-            href={heroContent.buttonLink} 
+            href="#meetings" 
             className="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-lg mx-2"
           >
-            {heroContent.buttonText}
+            Join Our Worship
           </a>
           <a 
             href="#about" 

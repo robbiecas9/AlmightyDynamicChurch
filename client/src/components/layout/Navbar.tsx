@@ -1,34 +1,6 @@
-import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
   const navItems = [
     { title: "Home", href: "#hero" },
     { title: "Our Belief", href: "#about" },
@@ -37,23 +9,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-primary bg-opacity-95 shadow-lg" 
-          : "bg-primary bg-opacity-40"
-      }`}
-      style={{ height: "60px" }}
-    >
-      <div className="container mx-auto h-full px-4 flex justify-between items-center">
-        <a 
-          href="#hero" 
-          className="text-white font-heading font-bold text-xl md:text-2xl"
-        >
+    <div className="bg-primary py-4">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="text-white font-heading font-bold text-xl md:text-2xl mb-4 md:mb-0">
           ALMIGHTY GOD FELLOWSHIP
-        </a>
+        </div>
         
-        <div className="hidden md:flex space-x-8 items-center">
+        <div className="flex flex-wrap justify-center gap-6">
           {navItems.map((item, index) => (
             item.href.startsWith('/') ? (
               <Link
@@ -74,47 +36,8 @@ const Navbar = () => {
             )
           ))}
         </div>
-        
-        <button 
-          className="md:hidden text-white focus:outline-none" 
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
       </div>
-      
-      {/* Mobile Menu */}
-      <div 
-        className={`md:hidden bg-primary bg-opacity-95 w-full shadow-md ${
-          isOpen ? "block" : "hidden"
-        }`}
-      >
-        <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
-          {navItems.map((item, index) => 
-            item.href.startsWith('/') ? (
-              <Link
-                key={index}
-                href={item.href}
-                className="text-white hover:text-secondary transition-colors py-2 font-medium"
-                onClick={closeMenu}
-              >
-                {item.title}
-              </Link>
-            ) : (
-              <a
-                key={index}
-                href={item.href}
-                className="text-white hover:text-secondary transition-colors py-2 font-medium"
-                onClick={closeMenu}
-              >
-                {item.title}
-              </a>
-            )
-          )}
-        </div>
-      </div>
-    </nav>
+    </div>
   );
 };
 

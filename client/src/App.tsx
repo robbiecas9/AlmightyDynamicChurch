@@ -21,17 +21,39 @@ import ContactSection from "@/components/sections/ContactSection";
 
 function HomePage() {
   return (
-    <div className="font-body text-dark bg-light flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
+    <div className="font-body text-dark bg-light">
+      <header className="sticky top-0 z-50">
+        <Navbar />
+      </header>
+
+      <section className="relative">
         <Hero />
+      </section>
+
+      <section>
         <ScriptureBanner />
+      </section>
+
+      <section>
         <PastorMessage />
+      </section>
+
+      <section>
         <OurBeliefs />
+      </section>
+
+      <section>
         <BibleImageSection />
+      </section>
+
+      <section>
         <MeetingsSection />
+      </section>
+
+      <section>
         <ContactSection />
-      </main>
+      </section>
+
       <Footer />
     </div>
   );
@@ -39,9 +61,11 @@ function HomePage() {
 
 function AdminPage() {
   return (
-    <div className="font-body text-dark bg-light min-h-screen flex flex-col">
-      <Navbar />
-      <div className="pt-24 flex-grow">
+    <div className="font-body text-dark bg-light min-h-screen">
+      <header className="sticky top-0 z-50">
+        <Navbar />
+      </header>
+      <div className="pt-24">
         <Dashboard />
       </div>
       <Footer />
