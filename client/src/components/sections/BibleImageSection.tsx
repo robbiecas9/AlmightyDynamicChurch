@@ -5,7 +5,7 @@ const BibleImageSection = () => {
     <section className="relative py-24" id="bible-section">
       <div className="absolute inset-0 z-0">
         <img
-          src={`${bibleImageContent.imageUrl}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80`}
+          src={bibleImageContent.imageUrl}
           className="object-cover w-full h-full"
           alt="Open Bible"
         />
