@@ -2,23 +2,10 @@ import { bibleImageContent } from "@/lib/church-data";
 
 const BibleImageSection = () => {
   return (
-    <section className="relative py-24" id="bible-section">
-      <div className="absolute inset-0 z-0">
-        <img
-          src={bibleImageContent.imageUrl}
-          className="object-cover w-full h-full"
-          alt="Open Bible"
-          onError={(e) => {
-            console.error('Failed to load image:', bibleImageContent.imageUrl);
-            e.currentTarget.src = '/bible-study.jpg';
-          }}
-        />
-        <div className="absolute inset-0 bg-overlay"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center text-white">
-          <div className="animate-fade-in-down">
+    <section className="py-24 bg-cover bg-center" id="bible-section" style={{ backgroundImage: "url('/bible-study.jpg')" }}>
+      <div className="bg-black bg-opacity-60 -mx-4 px-4 py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center text-white">
             <p className="text-xl md:text-2xl mb-6 scripture">
               "{bibleImageContent.content}"
               <span className="text-secondary font-semibold">( {bibleImageContent.reference})</span>
@@ -26,10 +13,10 @@ const BibleImageSection = () => {
 
             <div className="mt-8">
               <a
-                href={bibleImageContent.buttonLink}
+                href="#meetings"
                 className="bg-white text-primary hover:bg-secondary hover:text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-lg"
               >
-                {bibleImageContent.buttonText}
+                Join Our Worship
               </a>
             </div>
           </div>
