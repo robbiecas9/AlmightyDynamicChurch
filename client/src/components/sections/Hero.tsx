@@ -5,7 +5,7 @@ const Hero = () => {
     <section id="hero" className="relative py-20 md:py-32">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1599382104961-de59c7975859?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3" 
+          src="/praying-hands.jpg" 
           className="object-cover w-full h-full" 
           alt="Praying hands" 
         />
