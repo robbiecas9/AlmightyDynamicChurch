@@ -10,7 +10,7 @@ const MeetingsSection = () => {
             Worship Services & Meetings
           </h2>
 
-          <div className="flex flex-col lg:flex-row gap-12">
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
             <div className="lg:w-1/2 animate-fade-in-down animate-delay-2">
               <p className="text-lg mb-6">
                 Our Christian meetings serve as gatherings where believers come together to worship, study scripture, pray, and fellowship with one another. Hebrews 10:25 says, "And let us not neglect our meeting together, as some people do, but encourage one another, especially now that the day of his return is drawing near."
@@ -23,18 +23,16 @@ const MeetingsSection = () => {
               <p className="text-lg mb-8">
                 Fellowship fosters a sense of community and support, allowing believers to share their joys, struggles, and faith journeys with one another.
               </p>
-
-              {/* Image removed */}
             </div>
 
             <div className="lg:w-1/2 animate-fade-in-down animate-delay-3">
-              <div className="bg-gray-50 rounded-lg shadow-lg p-8">
-                <h3 className="text-2xl font-heading font-bold text-primary mb-6">
+              <div className="bg-gray-50 rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
+                <h3 className="text-2xl font-heading font-bold text-primary mb-6 text-center">
                   Worship Meeting Timings
                 </h3>
 
                 <div className="mb-8">
-                  <div className="flex items-center mb-2">
+                  <div className="flex items-center justify-center mb-4">
                     <span className="text-secondary mr-3 text-xl">
                       <Calendar className="h-6 w-6" />
                     </span>
@@ -46,7 +44,7 @@ const MeetingsSection = () => {
                   {meetingData.map((meeting) => (
                     <div
                       key={meeting.id}
-                      className="flex flex-col sm:flex-row sm:items-center p-4 bg-white rounded-lg shadow-md"
+                      className="flex flex-col sm:flex-row sm:items-center p-5 bg-white rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:bg-gray-50 hover:translate-y-[-2px] hover:border-l-4 hover:border-secondary"
                     >
                       <div className="sm:w-1/2 mb-3 sm:mb-0">
                         <h4 className="text-lg font-bold text-primary">{meeting.title}</h4>
@@ -54,15 +52,13 @@ const MeetingsSection = () => {
                           <p className="text-sm text-gray-600">{meeting.location}</p>
                         )}
                       </div>
-                      <div className="sm:w-1/2 flex items-center">
-                        <Clock className="text-secondary mr-2 h-5 w-5" />
-                        <span>{meeting.time}</span>
+                      <div className="sm:w-1/2 flex items-center justify-end">
+                        <Clock className="text-secondary mr-2 h-5 w-5 animate-pulse-subtle" />
+                        <span className="font-medium">{meeting.time}</span>
                       </div>
                     </div>
                   ))}
                 </div>
-
-                {/* Second image removed */}
               </div>
             </div>
           </div>
