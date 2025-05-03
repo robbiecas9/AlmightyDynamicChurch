@@ -5,9 +5,9 @@ const Hero = () => {
     <section id="hero" className="relative py-20 md:py-32">
       <div className="absolute inset-0 z-0">
         <img 
-          src="/church-building.jpg"
+          src="/bible-study.jpg"
           className="object-cover w-full h-full" 
-          alt="Church worship" 
+          alt="Bible study" 
         />
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>

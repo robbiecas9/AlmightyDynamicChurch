@@ -5,9 +5,9 @@ const BibleImageSection = () => {
     <section className="relative py-24" id="bible-section">
       <div className="absolute inset-0 z-0">
         <img
-          src="/bible-study.jpg"
+          src="/pastor.jpg"
           className="object-cover w-full h-full"
-          alt="Open Bible"
+          alt="Pastor"
         />
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>
