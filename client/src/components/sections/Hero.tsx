@@ -8,7 +8,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0 z-0">
         <img 
-          src={`${heroContent.imageUrl}?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80`} 
+          src={heroContent.imageUrl} 
           className="object-cover w-full h-full" 
           alt="Church worship" 
         />
@@ -31,18 +31,10 @@ const Hero = () => {
         <div 
           className="mb-8 max-w-3xl mx-auto animate-fade-in-down animate-delay-2"
         >
-          <h2 className="text-secondary font-heading text-2xl md:text-3xl mb-2">FOLLOW JESUS</h2>
           <p className="text-white text-xl md:text-2xl">{heroContent.content}</p>
         </div>
         
-        <div 
-          className="scripture bg-white bg-opacity-10 p-6 rounded-lg max-w-3xl mx-auto text-white animate-fade-in-down animate-delay-3"
-        >
-          <p className="text-lg md:text-xl">
-            "Come, let us bow down in worship, let us kneel before the LORD our Maker; for he is our God and we are the people of his pasture, the flock under his care"
-            <span className="text-secondary font-semibold">( Psalms 95: 6,7)</span>
-          </p>
-        </div>
+
         
         <div 
           className="mt-12 animate-fade-in-down animate-delay-4"
