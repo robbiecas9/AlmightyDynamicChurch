@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="text-white font-heading font-bold text-xl md:text-2xl flex items-center">
             <div className="mr-2 h-8 w-8 bg-secondary rounded-full flex items-center justify-center">
-              <span className="text-primary text-sm font-bold">AG</span>
+              <span className="text-primary text-sm font-bold">AGF</span>
             </div>
             <span className="sm:inline hidden">ALMIGHTY GOD FELLOWSHIP</span>
             <span className="sm:hidden inline">AGF</span>
