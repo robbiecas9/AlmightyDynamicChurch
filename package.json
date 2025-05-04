@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "drizzle-orm-pg": "^0.16.3"
+  }
+}
