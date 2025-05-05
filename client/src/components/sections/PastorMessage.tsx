@@ -22,6 +22,60 @@ const PastorMessage = () => {
   const { elementRef: titleRef, animate: animateTitle } = useGSAPAnimation<HTMLHeadingElement>();
   const { elementRef: imageContainerRef, animate: animateImage } = useGSAPAnimation<HTMLDivElement>();
   const { elementRef: textContainerRef, animate: animateText } = useGSAPAnimation<HTMLDivElement>();
+  
+  // GSAP animations
+  useEffect(() => {
+    // Title animation
+    animateTitle({
+      y: 50,
+      opacity: 0,
+      scrollTrigger: true,
+      start: "top 80%",
+    });
+    
+    // Image animation with scale-up effect
+    animateImage({
+      scale: 0.7,
+      opacity: 0,
+      delay: 0.2,
+      scrollTrigger: true,
+      start: "top 80%",
+      ease: "back.out(1.7)"
+    });
+    
+    // Text content animation with staggered paragraphs
+    animateText({
+      opacity: 0,
+      x: 50,
+      delay: 0.4,
+      scrollTrigger: true,
+      start: "top 80%"
+    });
+    
+    // Staggered paragraph animations within the text container
+    if (textContainerRef.current) {
+      const paragraphElements = textContainerRef.current.querySelectorAll('p');
+      
+      gsap.fromTo(paragraphElements, 
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: textContainerRef.current,
+            start: "top 85%"
+          }
+        }
+      );
+    }
+    
+    return () => {
+      ScrollTrigger.getAll().forEach(st => st.kill());
+    };
+  }, []);
 
   return (
     <section id="pastor-message" ref={sectionRef} className="py-10 md:py-16 bg-white">

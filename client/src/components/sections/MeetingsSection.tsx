@@ -1,17 +1,94 @@
 import { Clock, Calendar } from "lucide-react";
 import { meetingData } from "@/lib/church-data";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAPAnimation } from "@/hooks/use-gsap";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const MeetingsSection = () => {
+  // GSAP animation refs
+  const { elementRef: sectionRef } = useGSAPAnimation<HTMLElement>();
+  const { elementRef: titleRef, animate: animateTitle } = useGSAPAnimation<HTMLHeadingElement>();
+  const { elementRef: descriptionRef, animate: animateDescription } = useGSAPAnimation<HTMLDivElement>();
+  const { elementRef: meetingsRef, animate: animateMeetings } = useGSAPAnimation<HTMLDivElement>();
+  const { elementRef: meetingTitleRef, animate: animateMeetingTitle } = useGSAPAnimation<HTMLHeadingElement>();
+  const meetingItemsRef = useRef<HTMLDivElement>(null);
+  
+  // GSAP animations
+  useEffect(() => {
+    // Title animation
+    animateTitle({
+      y: 50,
+      opacity: 0,
+      scrollTrigger: true,
+      start: "top 80%",
+    });
+    
+    // Description container animation
+    animateDescription({
+      x: -50,
+      opacity: 0,
+      delay: 0.2,
+      scrollTrigger: true,
+      start: "top 80%",
+    });
+    
+    // Meetings container animation
+    animateMeetings({
+      x: 50,
+      opacity: 0,
+      delay: 0.3,
+      scrollTrigger: true,
+      start: "top 80%",
+    });
+    
+    // Meeting title animation
+    animateMeetingTitle({
+      y: 30,
+      opacity: 0,
+      delay: 0.5,
+      scrollTrigger: true,
+      start: "top 80%",
+    });
+    
+    // Animate meeting items with staggered effect
+    if (meetingItemsRef.current) {
+      const meetingItems = meetingItemsRef.current.querySelectorAll('.meeting-item');
+      
+      gsap.fromTo(meetingItems,
+        { y: 30, opacity: 0, scale: 0.95 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: meetingItemsRef.current,
+            start: "top 85%",
+          }
+        }
+      );
+    }
+    
+    return () => {
+      ScrollTrigger.getAll().forEach(st => st.kill());
+    };
+  }, []);
   return (
-    <section id="meetings" className="py-10 md:py-16 bg-white">
+    <section id="meetings" ref={sectionRef} className="py-10 md:py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="animate-fade-in-down">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-16 fancy-heading animate-heading">
+        <div>
+          <h2 ref={titleRef} className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-16 fancy-heading">
             Worship Services & Meetings
           </h2>
 
           <div className="flex flex-col lg:flex-row gap-2 md:gap-12 items-stretch mt-2 md:mt-0">
-            <div className="lg:w-1/2 animate-fade-in-down animate-delay-2 flex flex-col justify-center p-2 md:p-4 pt-4 md:pt-8">
+            <div ref={descriptionRef} className="lg:w-1/2 flex flex-col justify-center p-2 md:p-4 pt-4 md:pt-8">
               <p className="text-lg mb-4 md:mb-8">
                 Our Christian meetings serve as gatherings where believers come together to worship, study scripture, pray, and fellowship with one another. Hebrews 10:25 says, "And let us not neglect our meeting together, as some people do, but encourage one another, especially now that the day of his return is drawing near."
               </p>
