@@ -2,25 +2,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
-  FormMessage 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
-import { 
-  Church, 
-  Phone, 
-  Mail, 
-  Globe 
-} from "lucide-react";
+import { Church, Phone, Mail, Globe } from "lucide-react";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -44,9 +38,22 @@ const ContactSection = () => {
     },
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = async (data: ContactFormValues) => {
+    setIsSubmitting(true);
     try {
-      await apiRequest("POST", "/api/contact", data);
+      // For Netlify, use the built-in form handling
+      const formData = new FormData();
+      formData.append("form-name", "contact");
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value as string);
+      });
+      
+      await fetch("/", {
+        method: "POST",
+        body: formData,
+      });
       
       toast({
         title: "Message Sent!",
@@ -60,6 +67,9 @@ const ContactSection = () => {
         description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -107,10 +117,9 @@ const ContactSection = () => {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>almightygwc@gmail.com</p>
+                      <p>almightygf@gmail.com</p>
                     </div>
                   </div>
-
                   <div className="flex">
                     <div className="text-secondary mr-4">
                       <Globe className="h-5 w-5" />
@@ -141,8 +150,23 @@ const ContactSection = () => {
                   Get In Touch
                 </h3>
 
+                {/* Hidden form for Netlify */}
+                <form name="contact" data-netlify="true" hidden>
+                  <input type="text" name="name" />
+                  <input type="email" name="email" />
+                  <input type="tel" name="phone" />
+                  <textarea name="message"></textarea>
+                </form>
+
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                    data-netlify="true"
+                    name="contact"
+                  >
+                    {/* Netlify form detection field */}
+                    <input type="hidden" name="form-name" value="contact" />
                     <FormField
                       control={form.control}
                       name="name"
@@ -219,9 +243,11 @@ const ContactSection = () => {
                     <Button
                       type="submit"
                       className="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg"
-                      disabled={form.formState.isSubmitting}
+                      disabled={isSubmitting || form.formState.isSubmitting}
                     >
-                      {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+                      {isSubmitting || form.formState.isSubmitting
+                        ? "Sending..."
+                        : "Send Message"}
                     </Button>
                   </form>
                 </Form>
