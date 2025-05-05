@@ -102,9 +102,9 @@ const MeetingsSection = () => {
               </p>
             </div>
 
-            <div className="lg:w-1/2 animate-fade-in-down animate-delay-3 flex flex-col">
+            <div ref={meetingsRef} className="lg:w-1/2 flex flex-col">
               <div className="bg-gray-50 rounded-lg shadow-lg p-4 md:p-8 transition-all duration-300 hover:shadow-xl flex-grow flex flex-col">
-                <h3 className="text-2xl font-heading font-bold text-primary mb-5 md:mb-10 text-center fancy-heading-center">
+                <h3 ref={meetingTitleRef} className="text-2xl font-heading font-bold text-primary mb-5 md:mb-10 text-center fancy-heading-center">
                   Worship Meeting Timings
                 </h3>
 
@@ -117,11 +117,11 @@ const MeetingsSection = () => {
                   </div>
                 </div>
 
-                <div className="space-y-6">
+                <div ref={meetingItemsRef} className="space-y-6">
                   {meetingData.map((meeting) => (
                     <div
                       key={meeting.id}
-                      className="flex flex-col sm:flex-row sm:items-center p-5 bg-white rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:bg-gray-50 hover:translate-y-[-2px] hover:border-l-4 hover:border-secondary"
+                      className="meeting-item flex flex-col sm:flex-row sm:items-center p-5 bg-white rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:bg-gray-50 hover:translate-y-[-2px] hover:border-l-4 hover:border-secondary"
                     >
                       <div className="sm:w-1/2 mb-3 sm:mb-0">
                         <h4 className="text-lg font-bold text-primary">{meeting.title}</h4>
