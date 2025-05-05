@@ -2,6 +2,16 @@
 
 This guide explains how to deploy the Almighty God Fellowship website to Netlify as a completely static site, eliminating the need for any backend server or database.
 
+## Quick Start
+
+The easiest way to build and prepare your site for Netlify deployment:
+
+```bash
+./build_for_netlify.sh
+```
+
+After running this script, the `dist` directory will contain all files ready for upload to Netlify.
+
 ## What's Changed
 
 1. All content is now stored directly in the code (`client/src/lib/church-data.ts`)
@@ -59,7 +69,16 @@ This deployment is configured as a fully static website with no backend requirem
 
 ### Form Handling
 
-The contact form is configured to work with Netlify Forms. The essential elements are:
+The contact form is configured to work with Netlify Forms. Form submissions will be stored in your Netlify dashboard and you can set up email notifications to forward submissions to almightygf@gmail.com.
+
+To set up email notifications:
+1. After deployment, go to your Netlify dashboard
+2. Select your site and go to Site settings > Forms > Form notifications
+3. Click "Add notification" and select "Email notification"
+4. Enter almightygf@gmail.com as the email address to receive notifications
+5. Save the settings
+
+The essential elements of the Netlify form implementation are:
 
 1. A hidden form with the same fields as your visible form:
    ```html
