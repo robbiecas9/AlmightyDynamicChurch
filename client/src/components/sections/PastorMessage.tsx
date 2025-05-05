@@ -1,4 +1,11 @@
 import { pastorMessageContent } from "@/lib/church-data";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAPAnimation } from "@/hooks/use-gsap";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const PastorMessage = () => {
   // Split the content into paragraphs
@@ -9,19 +16,26 @@ const PastorMessage = () => {
     acc[paragraphIndex] += sentence + (index < array.length - 1 ? '. ' : '');
     return acc;
   }, [] as string[]);
+  
+  // GSAP animation refs
+  const { elementRef: sectionRef } = useGSAPAnimation<HTMLElement>();
+  const { elementRef: titleRef, animate: animateTitle } = useGSAPAnimation<HTMLHeadingElement>();
+  const { elementRef: imageContainerRef, animate: animateImage } = useGSAPAnimation<HTMLDivElement>();
+  const { elementRef: textContainerRef, animate: animateText } = useGSAPAnimation<HTMLDivElement>();
 
   return (
-    <section id="pastor-message" className="py-10 md:py-16 bg-white">
+    <section id="pastor-message" ref={sectionRef} className="py-10 md:py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="animate-fade-in-down">
+        <div>
           <h2
-            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-16 fancy-heading animate-heading"
+            ref={titleRef}
+            className="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4 md:mb-16 fancy-heading"
           >
             {pastorMessageContent.title.toUpperCase()}
           </h2>
 
           <div className="flex flex-col md:flex-row items-center mt-2 md:mt-0">
-            <div className="md:w-1/3 mb-4 md:mb-0 animate-fade-in-down animate-delay-2">
+            <div ref={imageContainerRef} className="md:w-1/3 mb-4 md:mb-0">
               <div className="relative rounded-full overflow-hidden w-48 h-48 md:w-64 md:h-64 mx-auto border-4 border-secondary shadow-lg">
                 <img
                   src={pastorMessageContent.imageUrl}
@@ -35,7 +49,7 @@ const PastorMessage = () => {
               </div>
             </div>
 
-            <div className="md:w-2/3 md:pl-12 animate-fade-in-down animate-delay-3">
+            <div ref={textContainerRef} className="md:w-2/3 md:pl-12">
               <div className="prose prose-base md:prose-lg max-w-none">
                 {paragraphs.map((paragraph, index) => (
                   <p key={index} className={index === paragraphs.length - 1 ? "font-semibold" : "mb-3 md:mb-4"}>
