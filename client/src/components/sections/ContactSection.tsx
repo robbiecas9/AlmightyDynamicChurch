@@ -45,15 +45,23 @@ const ContactSection = () => {
     try {
       // For Netlify, use the built-in form handling
       const formData = new FormData();
+      
+      // Add form name and data fields
       formData.append("form-name", "contact");
       Object.entries(data).forEach(([key, value]) => {
         formData.append(key, value as string);
       });
       
-      await fetch("/", {
+      // Submit directly to Netlify's form handling endpoint
+      const response = await fetch("/", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
       });
+      
+      if (!response.ok) {
+        throw new Error(`Form submission failed: ${response.status}`);
+      }
       
       toast({
         title: "Message Sent!",
@@ -117,7 +125,7 @@ const ContactSection = () => {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>almightygf@gmail.com</p>
+                      <p>almightygwc@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex">
@@ -151,11 +159,12 @@ const ContactSection = () => {
                 </h3>
 
                 {/* Hidden form for Netlify */}
-                <form name="contact" data-netlify="true" hidden>
+                <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
                   <input type="text" name="name" />
                   <input type="email" name="email" />
                   <input type="tel" name="phone" />
                   <textarea name="message"></textarea>
+                  <input type="hidden" name="bot-field" />
                 </form>
 
                 <Form {...form}>
@@ -164,9 +173,11 @@ const ContactSection = () => {
                     className="space-y-6"
                     data-netlify="true"
                     name="contact"
+                    netlify-honeypot="bot-field"
                   >
                     {/* Netlify form detection field */}
                     <input type="hidden" name="form-name" value="contact" />
+                    <input type="hidden" name="bot-field" />
                     <FormField
                       control={form.control}
                       name="name"

@@ -167,10 +167,10 @@ const ContactSection = () => {
             <p className="mb-2">
               <strong>Email:</strong>{" "}
               <a 
-                href="mailto:almightygf@gmail.com" 
+                href="mailto:almightygwc@gmail.com" 
                 className="text-primary hover:underline"
               >
-                almightygf@gmail.com
+                almightygwc@gmail.com
               </a>
             </p>
             <p className="mb-2">
