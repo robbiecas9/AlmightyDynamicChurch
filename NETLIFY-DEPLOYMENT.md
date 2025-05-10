@@ -69,13 +69,13 @@ This deployment is configured as a fully static website with no backend requirem
 
 ### Form Handling
 
-The contact form is configured to work with Netlify Forms. Form submissions will be stored in your Netlify dashboard and you can set up email notifications to forward submissions to almightygf@gmail.com.
+The contact form is configured to work with Netlify Forms. Form submissions will be stored in your Netlify dashboard and you can set up email notifications to forward submissions to almightygwc@gmail.com.
 
 To set up email notifications:
 1. After deployment, go to your Netlify dashboard
 2. Select your site and go to Site settings > Forms > Form notifications
 3. Click "Add notification" and select "Email notification"
-4. Enter almightygf@gmail.com as the email address to receive notifications
+4. Enter almightygwc@gmail.com as the email address to receive notifications
 5. Save the settings
 
 The essential elements of the Netlify form implementation are:
