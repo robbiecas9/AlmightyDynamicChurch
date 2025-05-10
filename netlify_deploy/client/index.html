@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Almighty God Fellowship</title>
+    <meta name="description" content="A place of love, faith, and community" />
+    <!-- Netlify form handling enabled -->
+    <script>
+      // For static builds handle form submissions via Netlify
+      if (window.location.host.includes('netlify.app') || window.location.host.includes('almightygodfellowship.com')) {
+        console.log('Netlify form handling enabled');
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
