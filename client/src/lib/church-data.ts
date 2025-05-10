@@ -190,20 +190,26 @@ export const beliefData: Belief[] = [
   },
   {
     id: 9,
-    title: "Preaching Work",
-    summary:
-      "Jesus told us to teach people to obey everything he had commanded us. We should have a sense of responsibility to preach the good news of the kingdom to all the world.",
-    content:
-      "Jesus told us to teach people to obey everything he had commanded us. We should have a sense of responsibility to preach the good news of the kingdom to all the world, making disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit. The end of this systems of things is fast approaching. We need to proclaim the good news to save people from the great destruction. God's Kingdom is a promise of restoration, where the current world will be transformed into a paradise under the rulership of Christ Jesus.",
-    scripture: "(Mathew 24:14. Mark 16:15. 1 Corinthians 9:16, Acts 10: 34,35)",
-  },
+  title: "Our Christian Responsibility",
+  summary: "As followers of Christ, we are called to reflect God's love by living in service, unity, and compassion.",
+  content:
+    "As Christians, we are called to preach the good news of God’s Kingdom and live lives that reflect Christ’s example. We have a duty to serve, support, and encourage one another—helping fellow believers remain strong, faithful, and hopeful in a challenging world. We are also called to promote love, unity, and compassion in our communities. Loving others as ourselves means extending grace, patience, and kindness to everyone, including those who may be difficult to love. Our actions should reflect God’s character, treating all people with dignity, respect, and sincere care.",
+  scripture: "(John 13:34–35, Galatians 6:2, Romans 12:10)",
+},
   {
-    id: 10,
-    title: "Our Christian Responsibility",
-    summary:
-      "We have a sense of responsibility to preach the good news of the kingdom to all. We have a Christian duty to serve each other and encourage one another, to help them believe, overcome and stay faithful.",
-    content:
-      "We have a sense of responsibility to preach the good news of the kingdom to all. We have a Christian duty to serve each other and encourage one another, to help them believe, overcome and stay faithful in a discouraging world. We need to promote love and harmony in the community. We need to love others as ourselves. This includes not only those who are easy to love, but also those who are difficult or different from us. As followers of Christ, we are called to show God's love and grace to everyone we meet, treating all people with dignity, respect, and compassion.",
-    scripture: "",
-  },
+  id: 10,
+  title: "God’s Kingdom",
+  summary: "God’s Kingdom is the only lasting solution and hope for mankind. It will restore the earth and fulfill God's original purpose.",
+  content:
+    "God’s Kingdom refers to God’s government—His sovereign authority and reign over all creation and His people. Sometimes called the 'Heavenly Kingdom,' it signifies a government from heaven. Human governments have failed to solve mankind’s problems or bring lasting peace and security. God originally created everything good and harmonious, but under human rule, the world has strayed from that standard. Soon, God’s Kingdom—ruled by His Son, Jesus Christ—will take complete control of the earth and restore it to its original, 'perfect' state. It will reunite mankind with God and fulfill His promises of peace, restoration, and everlasting life.",
+  scripture: "(Daniel 2:44, Isaiah 9:6, Psalms 37:29, Revelation 21:3–5)",
+},
+{
+  id: 11,
+  title: "Preaching God’s Kingdom",
+  summary: "We are called to preach the good news of God’s Kingdom and make disciples of all nations before the end comes.",
+  content:
+    "Jesus saw preaching the Kingdom as His primary mission. It was the first and last message He proclaimed. He trained His disciples to continue this mission, instructing them to teach others to obey all His commands. We are called to carry this responsibility forward—preaching the good news of the Kingdom to all nations, making disciples, and baptizing them in the name of the Father, Son, and Holy Spirit. As the end of this system draws near, the need to proclaim the Kingdom becomes even more urgent. God’s Kingdom promises full restoration: transforming this world into a paradise under the rulership of Christ Jesus.",
+  scripture: "(Matthew 24:14, 28:19–20; Mark 16:15; Acts 1:8)",
+},
 ];
