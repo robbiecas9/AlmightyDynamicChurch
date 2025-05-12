@@ -53,7 +53,7 @@ export const pastorMessageContent: PastorMessageContent = {
   title: "Message From Our Pastor",
   subtitle: "Rev. Dr. Jacob Mathai",
   content:
-    "ALMIGHTY GOD Fellowship is a reformed spiritual movement inspired by the Holy spirit and totally based on the teachings of Jesus Christ. As per the teachings of Jesus Christ in John 17: 3 the ONLY ONE AND TRUE God is the ALMIGHTY JEHOVAH God, the creator of heavens and earth (Genesis 1: 1, 2:4, 17: 1). As per John 4: 23,24 and Mathew 4: 10, Jesus said to worship ONLY THE FATHER in spirit and truth. According to Rev 5: 13 people are expected to give glory and express thanks and gratitude to Jesus, the son of God, our saviour who died for us on the cross of Calvary. We encourage people of all nations to worship Almighty Jehovah God through Jesus Christ. You are welcome to join our worship meetings on every Sundays.",
+    "ALMIGHTY GOD Fellowship is a reformed spiritual christian fellowship inspired by the Holy spirit and totally based on the teachings of Jesus Christ. As per the teachings of Jesus Christ in John 17: 3 the ONLY ONE AND TRUE God is the ALMIGHTY JEHOVAH God, the creator of heavens and earth (Genesis 1: 1, 2:4, 17: 1). As per John 4: 23,24 and Mathew 4: 10, Jesus said to worship ONLY THE FATHER in spirit and truth. According to Rev 5: 13 people are expected to give glory and express thanks and gratitude to Jesus, the son of God, our saviour who died for us on the cross of Calvary. We encourage people of all nations to worship Almighty Jehovah God through Jesus Christ. You are welcome to join our worship meetings on every Sundays.",
   name: "Rev Dr. Jacob Mathai",
   position: "Senior Pastor",
   imageUrl: "/pastor.jpg",
@@ -211,5 +211,14 @@ export const beliefData: Belief[] = [
   content:
     "Jesus saw preaching the Kingdom as His primary mission. It was the first and last message He proclaimed. He trained His disciples to continue this mission, instructing them to teach others to obey all His commands. We are called to carry this responsibility forward—preaching the good news of the Kingdom to all nations, making disciples, and baptizing them in the name of the Father, Son, and Holy Spirit. As the end of this system draws near, the need to proclaim the Kingdom becomes even more urgent. God’s Kingdom promises full restoration: transforming this world into a paradise under the rulership of Christ Jesus.",
   scripture: "(Matthew 24:14, 28:19–20; Mark 16:15; Acts 1:8)",
+},
+{
+  id: 12,
+  title: "The Message of Salvation for All",
+  summary:
+    "Preaching is the message of God's love and salvation for all people. It calls everyone to repentance, faith in Jesus, and hope in God’s Kingdom.",
+  content:
+    "Almighty God is love. He is the creator of all things and all people—and He is impartial. God's love is demonstrated most powerfully through the sacrifice of His Son, Jesus Christ. Jesus's willingness to give His life for humanity is the ultimate act of selfless love. Preaching is the sharing of this message of love and salvation. It invites individuals to repent, turn from sin, and place their trust in Jesus as their Savior. Jesus said, 'I am the way, the truth, and the life. No one comes to the Father except through me.' Almighty God arranged the salvation of mankind solely through Christ. Salvation is found through faith in Him alone. Preaching also comforts those facing life’s difficulties and helps people come to know God, His Son Jesus Christ, and the importance of living by God’s righteous standards. Ultimately, God's Kingdom is the only lasting solution for peace, justice, and hope for all humanity.",
+  scripture: "(John 3:16, 36; John 17:3; John 14:6; Acts 10:34–35; Acts 4:12; 1 Timothy 2:5)",
 },
 ];

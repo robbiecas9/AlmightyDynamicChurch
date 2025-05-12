@@ -125,7 +125,7 @@ const ContactSection = () => {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p>almightygwc@gmail.com</p>
+                      <p>almightygf@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex">
