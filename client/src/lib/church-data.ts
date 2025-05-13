@@ -209,7 +209,7 @@ export const beliefData: Belief[] = [
   title: "Preaching God’s Kingdom",
   summary: "We are called to preach the good news of God’s Kingdom and make disciples of all nations before the end comes.",
   content:
-    "Jesus saw preaching the Kingdom as his primary mission. It was the first and last message he proclaimed. He trained his disciples to continue this mission, instructing them to teach others to obey all his commands. We are called to carry this responsibility forward—preaching the good news of the Kingdom to all nations, making disciples, and baptizing them in the name of the Father, Son, and Holy Spirit. As the end of this system draws near, the need to proclaim the Kingdom message becomes even more urgent. God’s Kingdom promises full restoration: transforming this world into a paradise under the rulership of Christ Jesus.",
+    "Jesus viewed preaching the Kingdom as his primary mission. It was the first and last message he proclaimed.He trained his disciples to continue this mission, instructing them to teach others to obey all his commands. We are called to carry this responsibility forward—preaching the good news of the Kingdom to all nations, making disciples, and baptizing them in the name of the Father, Son, and Holy Spirit. As the end of this system draws near, the need to proclaim the Kingdom message becomes even more urgent. God’s Kingdom promises full restoration: transforming this world into a paradise under the rulership of Christ Jesus.",
   scripture: "(Matthew 4:17,24:14, 28:19–20; Luke 4:43;Mark 16:15; Acts 1:2)",
 },
 {
