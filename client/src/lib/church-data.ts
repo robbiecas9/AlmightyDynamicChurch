@@ -137,9 +137,9 @@ export const beliefData: Belief[] = [
     id: 3,
     title: "Holy Spirit",
     summary:
-      "The Holy Spirit is the active force of Almighty God. Holy Spirit is not a person, it is the power Almighty God. God uses holy spirit, the power, to accomplish his purposes.",
+      "The Holy Spirit is the active force of Almighty God. Holy Spirit is not a person, it is the power of Almighty God. God uses holy spirit, the power, to accomplish his purposes.",
     content:
-      "The Holy Spirit is the active force of Almighty God. Holy Spirit is not a person, it is the power Almighty God. God uses holy spirit, the power, to accomplish his purposes. Holy Spirit is God's active presence in the world, guiding, comforting, and empowering believers. Holy Spirit inspired God's servants to write the Holy scriptures, the Bible. Holy spirit console, strengthen and help to understand deep knowledge about God's word. Holy Spirit leading them to deeper understanding, moral transformation, and spiritual maturity.",
+      "The Holy Spirit is the active force of Almighty God. Holy Spirit is not a person, it is the power of Almighty God. God uses holy spirit, the power, to accomplish his purposes. Holy Spirit is God's active presence in the world, guiding, comforting, and empowering believers. Holy Spirit inspired God's servants to write the Holy scriptures, the Bible. Holy spirit consoles, strengthens and helps to understand deep knowledge about God's word. Holy Spirit leading them to deeper understanding, moral transformation, and spiritual maturity.",
     scripture: "(Genesis 1:2, Mathew 1:20. Acts 2:4,33. Acts 10:44-47)",
   },
   {
@@ -209,7 +209,7 @@ export const beliefData: Belief[] = [
   title: "Preaching God’s Kingdom",
   summary: "We are called to preach the good news of God’s Kingdom and make disciples of all nations before the end comes.",
   content:
-    "Jesus saw preaching the Kingdom as His primary mission. It was the first and last message He proclaimed. He trained His disciples to continue this mission, instructing them to teach others to obey all His commands. We are called to carry this responsibility forward—preaching the good news of the Kingdom to all nations, making disciples, and baptizing them in the name of the Father, Son, and Holy Spirit. As the end of this system draws near, the need to proclaim the Kingdom becomes even more urgent. God’s Kingdom promises full restoration: transforming this world into a paradise under the rulership of Christ Jesus.",
+    "Jesus saw preaching the Kingdom as his primary mission. It was the first and last message he proclaimed. He trained his disciples to continue this mission, instructing them to teach others to obey all his commands. We are called to carry this responsibility forward—preaching the good news of the Kingdom to all nations, making disciples, and baptizing them in the name of the Father, Son, and Holy Spirit. As the end of this system draws near, the need to proclaim the Kingdom message becomes even more urgent. God’s Kingdom promises full restoration: transforming this world into a paradise under the rulership of Christ Jesus.",
   scripture: "(Matthew 4:17,24:14, 28:19–20; Luke 4:43;Mark 16:15; Acts 1:2)",
 },
 {
@@ -219,6 +219,6 @@ export const beliefData: Belief[] = [
     "Preaching is the message of God's love and salvation for all people. It calls everyone to repentance, faith in Jesus, and hope in God’s Kingdom.",
   content:
     "Almighty God is love. He is the creator of all things and all people—and He is impartial. God's love is demonstrated most powerfully through the sacrifice of His Son, Jesus Christ. Jesus's willingness to give His life for humanity is the ultimate act of selfless love. Preaching is the sharing of this message of love and salvation. It invites individuals to repent, turn from sin, and place their trust in Jesus as their Savior. Jesus said, 'I am the way, the truth, and the life. No one comes to the Father except through me.' Almighty God arranged the salvation of mankind solely through Christ. Salvation is found through faith in Him alone. Preaching also comforts those facing life’s difficulties and helps people come to know God, His Son Jesus Christ, and the importance of living by God’s righteous standards. God's Kingdom is the only lasting solution for peace, justice, and hope for all humanity.",
-  scripture: "(John 3:16, 36; John 17:3; John 14:6; Acts 10:34–35; Acts 4:12; 1 Timothy 2:5)",
+  scripture: "(John 3:16,36; John 17:3; John 14:6; Acts 10:34–35; Acts 4:12; 1 Timothy 2:5)",
 },
 ];
